@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import './App.scss';
-import Form from '../Form/Form'
-import Nav from '../Nav/Nav'
-import Loader from '../../components/Loader/Loader'
-import CardContainer from '../CardContainer/CardContainer'
-import { connect } from 'react-redux'
+import Form from '../Form/Form';
+import Nav from '../Nav/Nav';
+import Loader from '../../components/Loader/Loader';
+import CardContainer from '../CardContainer/CardContainer';
+import { connect } from 'react-redux';
+import banner from '../../images/banner.png';
+import crystal from '../../images/crystal.png';
+
 
 export class App extends Component {
 
@@ -13,10 +16,11 @@ export class App extends Component {
     return (
       <main>
         <Route exact path="/">
-
-            <section className='login-page'>
-              <Form />
-            </section>
+          <section className='login-page'>
+            <img src={banner} alt="Your Fate Lies in Your Hands" className='banner-text'/>
+            <Form />
+            <img src={crystal} alt="Two hands holding a crystal ball" className='crystal-ball-img'/>
+          </section>
 
         </Route>
         <Route exact path='/home'>
