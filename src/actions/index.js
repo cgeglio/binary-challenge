@@ -7,3 +7,13 @@ export const logout = user => ({
   type: 'LOGOUT',
   user
 })
+
+export const addCards = cards => ({
+  type: 'ADD_CARDS',
+  cards
+})
+
+export const addQuestion = question => ({
+  type: 'ADD_QUESTION',
+  question
+})
