@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Croissant+One&display=swap');
 
-form {
+.login-form {
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -10,7 +10,7 @@ form {
   z-index: 5;
 }
 
-input {
+.login-form input {
   background-color: black;
   border: 0;
   border-radius: 3px;
@@ -25,7 +25,7 @@ input {
   color: white;
 }
 
-.submit-btn {
+.login-submit-btn {
   background-color: black;
   border: 0;
   border-radius: 3px;
@@ -42,7 +42,7 @@ input {
   }
 }
 
-.error-message {
+.login-error-message {
   color: #D5A1EE;
   font-family: 'Croissant One';
   font-size: 1.5em;

@@ -28,7 +28,7 @@ export class Form extends Component {
 
   render() {
     return (
-      <form>
+      <form className='login-form'>
         <input
            type='text'
            placeholder='Username...'
@@ -43,8 +43,8 @@ export class Form extends Component {
            name='password'
            onChange={this.handleChange}
         />
-        <button onClick={this.verifyInputs} className="submit-btn">Submit</button>
-        <p className="error-message">{this.state.error}</p>
+        <button onClick={this.verifyInputs} className="login-submit-btn">Submit</button>
+        <p className="login-error-message">{this.state.error}</p>
       </form>
     )
   }
