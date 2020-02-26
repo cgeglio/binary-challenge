@@ -4,6 +4,7 @@ import './App.scss';
 import Form from '../Form/Form';
 import Nav from '../Nav/Nav';
 import Loader from '../../components/Loader/Loader';
+import ReadingStarter from '../../components/ReadingStarter/ReadingStarter';
 import CardContainer from '../CardContainer/CardContainer';
 import { connect } from 'react-redux';
 import banner from '../../images/banner.png';
@@ -25,10 +26,20 @@ export class App extends Component {
           }
         </Route>
         <Route exact path='/home'>
-            <Nav />
-
-            <CardContainer />
-            <p>hereeeeee</p>
+          {this.props.question ? <Redirect to='/reading' /> :
+            <>
+              <Nav />
+              <ReadingStarter />
+            </>
+          }
+        </Route>
+        <Route exact path='/reading'>
+          {!this.props.question ? <Redirect to='/home' /> :
+            <>
+              <Nav />
+              <CardContainer />
+            </>
+          }
         </Route>
       </main>
     )
@@ -37,10 +48,8 @@ export class App extends Component {
 
 const mapStateToProps = state => ({
   user: state.user,
-  cards: state.cards
+  cards: state.cards,
+  question: state.question
 })
 
 export default connect(mapStateToProps)(App);
-
-
-  // {!this.props.cards.length && <Loader />}
