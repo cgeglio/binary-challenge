@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Form.scss';
 import { connect } from 'react-redux';
+import { login } from '../../actions'
 
 
 export class Form extends Component {
@@ -20,7 +21,8 @@ export class Form extends Component {
   }
 
   completeLogin = () => {
-    console.log('hi');
+    const id = Date.now();
+    this.props.addUser({username: this.state.username, id: id, favorites: []})
     this.setState({username: '', password: '', error: null})
   }
 
@@ -49,8 +51,8 @@ export class Form extends Component {
 }
 
 
-const mapDispatchToProps = dispatch => {
-
-}
+const mapDispatchToProps = dispatch => ({
+  addUser: user => (dispatch(login(user)))
+})
 
 export default connect(null, mapDispatchToProps)(Form)

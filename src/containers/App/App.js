@@ -16,17 +16,19 @@ export class App extends Component {
     return (
       <main>
         <Route exact path="/">
+          {this.props.user.username ? <Redirect to='/home' /> :
           <section className='login-page'>
             <img src={banner} alt="Your Fate Lies in Your Hands" className='banner-text'/>
             <Form />
             <img src={crystal} alt="Two hands holding a crystal ball" className='crystal-ball-img'/>
           </section>
-
+          }
         </Route>
         <Route exact path='/home'>
             <Nav />
 
             <CardContainer />
+            <p>hereeeeee</p>
         </Route>
       </main>
     )
@@ -40,5 +42,5 @@ const mapStateToProps = state => ({
 
 export default connect(mapStateToProps)(App);
 
-  // {this.props.user.username ? <Redirect to='/home' /> :
+
   // {!this.props.cards.length && <Loader />}
