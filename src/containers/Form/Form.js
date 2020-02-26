@@ -16,7 +16,7 @@ export class Form extends Component {
   verifyInputs = event => {
     event.preventDefault();
     let values = Object.values(this.state);
-    values.includes('') ? this.setState({error: 'Please enter a valid username and password!'}) : this.completeLogin();
+    values.includes('') ? this.setState({error: 'Enter a username & password to proceed.'}) : this.completeLogin();
   }
 
   completeLogin = () => {
