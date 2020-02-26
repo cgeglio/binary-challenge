@@ -10,7 +10,7 @@ export const Nav = (props) => {
       <p>Logo</p>
       <button>Favorites</button>
       {props.user.id ?
-      <button onClick={props.logoutUser(props.user)}>Logout</button>
+      <Link to='/'><button onClick={() => props.logoutUser(props.user)}>Logout</button></Link>
       : <Link to='/'><button>Login</button></Link>
       }
     </section>
