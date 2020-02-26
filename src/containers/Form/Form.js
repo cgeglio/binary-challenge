@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Form.scss';
 import { connect } from 'react-redux';
 
+
 export class Form extends Component {
   constructor() {
     super()
@@ -40,7 +41,7 @@ export class Form extends Component {
            name='password'
            onChange={this.handleChange}
         />
-        <button onClick={this.verifyInputs}>Submit</button>
+        <button onClick={this.verifyInputs} className="submit-btn">Submit</button>
         <p className="error-message">{this.state.error}</p>
       </form>
     )
