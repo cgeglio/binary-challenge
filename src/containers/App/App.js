@@ -25,22 +25,26 @@ export class App extends Component {
           </section>
           }
         </Route>
-        <Route exact path='/home'>
-          {this.props.question ? <Redirect to='/reading' /> :
-            <>
-              <Nav />
-              <ReadingStarter />
-            </>
-          }
-        </Route>
-        <Route exact path='/reading'>
-          {!this.props.question ? <Redirect to='/home' /> :
-            <>
-              <Nav />
-              <CardContainer />
-            </>
-          }
-        </Route>
+        {!this.props.user.username ? <Redirect to='/' /> :
+          <>
+          <Route exact path='/home'>
+              {this.props.question ? <Redirect to='/reading' /> :
+                <>
+                  <Nav />
+                  <ReadingStarter />
+                </>
+              }
+          </Route>
+          <Route exact path='/reading'>
+            {!this.props.question ? <Redirect to='/home' /> :
+              <>
+                <Nav />
+                <CardContainer />
+              </>
+            }
+          </Route>
+          </>
+        }
       </main>
     )
   }

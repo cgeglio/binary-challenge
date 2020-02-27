@@ -22,3 +22,18 @@ export const addFortune = fortune => ({
   type: 'ADD_FORTUNE',
   fortune
 })
+
+export const addReading = currentReading => ({
+  type: 'ADD_READING',
+  currentReading
+})
+
+export const addFavorite = favorite => ({
+  type: 'ADD_FAVORITE',
+  favorite
+})
+
+export const removeFavorite = favorite => ({
+  type: 'REMOVE_FAVORITE',
+  favorite
+})
