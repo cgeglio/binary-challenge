@@ -44,7 +44,7 @@ export class Form extends Component {
            onChange={this.handleChange}
         />
         <button onClick={this.verifyInputs} className="login-submit-btn">SUBMIT</button>
-        <p className="login-error-message">{this.state.error}</p>
+        <p className="error-message">{this.state.error}</p>
       </form>
     )
   }
