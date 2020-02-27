@@ -2,7 +2,6 @@ import React from 'react';
 import './Loader.scss';
 import crystal from '../../images/crystal.png';
 
-
 const Loader = () => {
   return (
     <section className='loader'>

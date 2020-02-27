@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card should match the snapshot 1`] = `
+<article>
+  <img
+    alt="Tarot card"
+    src="/cardAssets/undefined.jpg"
+  />
+  <div
+    className="overlay"
+  >
+    <div
+      className="card-details"
+    >
+      <h3 />
+      <h4>
+        Meaning:
+      </h4>
+      <p />
+      <h4>
+        Description:
+      </h4>
+      <p />
+    </div>
+  </div>
+</article>
+`;

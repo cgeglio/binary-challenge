@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReadingPreview ReadingPreview container/component should match the snapshot 1`] = `
+<article
+  className="saved-preview"
+>
+  <div
+    className="preview-cards"
+  >
+    <div
+      className="preview-overlay"
+    />
+    <img
+      alt="Tarot card"
+      key="The Moon"
+      src="/cardAssets/undefined.jpg"
+    />
+  </div>
+  <h2
+    className="preview-question"
+  >
+    Is bithcuits a bad kitty?
+  </h2>
+  <Link
+    to="/saved/30"
+  >
+    <button
+      className="view-reading-btn"
+      onClick={[Function]}
+    >
+      View Reading
+    </button>
+  </Link>
+</article>
+`;
