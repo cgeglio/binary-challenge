@@ -41,7 +41,7 @@ export class ReadingStarter extends Component {
             onChange={this.changeQuestion}
           />
           <button onClick={this.verifyInput} className='ask-btn'>ASK THE CARDS</button>
-          <p className='question-error-msg'>{this.state.error}</p>
+          <p className='error-message'>{this.state.error}</p>
         </form>
         </section>
       </section>
