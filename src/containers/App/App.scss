@@ -1,7 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Spartan:400,700&display=swap');
+@import "../../mixins.scss";
 
 * {
-  font-family: 'Spartan', ;
+  font-family: 'Spartan';
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  color: white;
+  background-color: black;
+  height: 100vh;
 }
 
 .banner-text {
@@ -16,10 +25,7 @@
 }
 
 .login-page {
-  align-items: center;
-  background-color: black;
-  display: flex;
-  flex-direction: column;
+  @include flex();
   height: 100vh;
   padding: 20px;
   position: relative;
