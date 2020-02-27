@@ -1,0 +1,29 @@
+@import "../../mixins.scss";
+
+.nav-bar {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 45px;
+}
+
+.nav-btn {
+  @include buttons();
+  height: 35px;
+  margin: 0px 15px;
+  width: 100px;
+}
+
+.nav-btn-container {
+  align-self: baseline;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin: 30px 10px;
+}
+
+.logo-img {
+  height: 100px;
+  margin: 20px;
+}

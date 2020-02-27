@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './ReadingStarter.scss';
 import { connect } from 'react-redux';
 import { addQuestion } from '../../actions'
+import golden from '../../images/golden.png';
 
 export class ReadingStarter extends Component {
   constructor() {
@@ -27,19 +28,23 @@ export class ReadingStarter extends Component {
 
   render() {
     return (
-      <form className='question-form'>
-        <h2>Ready For Your Reading?</h2>
-        <h3>What question do you have for the cards?</h3>
-        <input
-          type='text'
-          placeholder='Please enter a question...'
-          name='question'
-          value={this.state.question}
-          onChange={this.changeQuestion}
-        />
-        <button onClick={this.verifyInput}>Submit</button>
-        <p className='question-error-msg'>{this.state.error}</p>
-      </form>
+      <section className='home-page'>
+        <img src={golden} alt="The Future Is Golden" className='golden-text'/>
+      <section className='form-container'>
+        <div className='circle'></div>
+        <form className='question-form'>
+          <input
+            type='text'
+            placeholder='Enter a question...'
+            name='question'
+            value={this.state.question}
+            onChange={this.changeQuestion}
+          />
+          <button onClick={this.verifyInput} className='ask-btn'>ASK THE CARDS</button>
+          <p className='question-error-msg'>{this.state.error}</p>
+        </form>
+        </section>
+      </section>
     )
   }
 }

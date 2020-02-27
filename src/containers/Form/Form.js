@@ -43,7 +43,7 @@ export class Form extends Component {
            name='password'
            onChange={this.handleChange}
         />
-        <button onClick={this.verifyInputs} className="login-submit-btn">Submit</button>
+        <button onClick={this.verifyInputs} className="login-submit-btn">SUBMIT</button>
         <p className="login-error-message">{this.state.error}</p>
       </form>
     )

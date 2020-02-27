@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css?family=Croissant+One&display=swap');
+@import "../../mixins.scss";
+
+.golden-text {
+  height: 180px;
+  position: absolute;
+}
+
+.home-page {
+  @include flex();
+  height: auto;
+  position: relative;
+}
+
+.form-container {
+  @include flex();
+  justify-content: flex-start;
+  margin-top: 100px;
+}
+
+.circle {
+  background-color: white;
+  border-radius: 50%;
+  height: 400px;
+  position: absolute;
+  width: 400px;
+}
+
+.question-form {
+  @include flex();
+  justify-content: center;
+  margin-top: 160px;
+  position: absolute;
+}
+
+.question-form input {
+  @include input();
+  font-size: 1em;
+  height: 50px;
+  text-indent: .8em;
+  width: 300px;
+}
+
+.ask-btn {
+  @include buttons();
+  height: 30px;
+  width: 180px;
+}

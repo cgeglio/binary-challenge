@@ -3,16 +3,19 @@ import { Link } from 'react-router-dom';
 import './Nav.scss';
 import { connect } from 'react-redux';
 import { logout } from '../../actions';
+import logo from '../../images/GoldenCity.png';
 
 export const Nav = (props) => {
   return (
-    <section>
-      <p>Logo</p>
-      <button>Favorites</button>
-      {props.user.id ?
-      <Link to='/'><button onClick={() => props.logoutUser(props.user)}>Logout</button></Link>
-      : <Link to='/'><button>Login</button></Link>
-      }
+    <section className='nav-bar'>
+      <img src={logo} alt="Golden City Tarot Logo" className='logo-img'/>
+      <div className='nav-btn-container'>
+        <button className='nav-btn'>FAVORITES</button>
+        {props.user.id ?
+        <Link to='/'><button onClick={() => props.logoutUser(props.user)} className='nav-btn'>LOGOUT</button></Link>
+        : <Link to='/'><button className='nav-btn'>LOGIN</button></Link>
+        }
+      </div>
     </section>
   )
 }
