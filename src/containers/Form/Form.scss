@@ -4,16 +4,16 @@
 .login-form {
   @include flex();
   justify-content: center;
-  margin-top: 400px;
+  margin-top: 410px;
   position: absolute;
   z-index: 5;
 }
 
 .login-form input {
   @include input();
-  height: 25px;
+  height: 30px;
   text-indent: .5em;
-  width: 150px;
+  width: 160px;
 }
 
 ::placeholder {

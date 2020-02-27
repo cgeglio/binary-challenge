@@ -19,14 +19,14 @@ main {
 }
 
 .crystal-ball-img {
-  height: 450px;
-  margin-top: 160px;
+  height: 500px;
+  margin-top: 140px;
   position: absolute;
 }
 
 .login-page {
   @include flex();
-  height: 100vh;
+  height: auto;
   padding: 20px;
   position: relative;
 }
