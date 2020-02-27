@@ -23,12 +23,12 @@ class CardContainer extends Component {
     return (
       !this.props.cards.length ? <Loader /> :
         <section className='card-container'>
-          <h2 className='question'>{this.props.question}</h2>
           <section className='cards'>
             {this.props.cards.map(card => {
               return <Card key={card.name_short} card={card} />
             })}
           </section>
+          <h2 className='question'>{this.props.question}</h2>
           <h2>{this.props.fortune}</h2>
       </section>
     )
