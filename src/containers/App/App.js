@@ -5,6 +5,8 @@ import Form from '../Form/Form';
 import Nav from '../Nav/Nav';
 import Loader from '../../components/Loader/Loader';
 import ReadingStarter from '../../components/ReadingStarter/ReadingStarter';
+import PreviewContainer from '../PreviewContainer/PreviewContainer';
+import FavoriteContainer from '../FavoriteContainer/FavoriteContainer';
 import CardContainer from '../CardContainer/CardContainer';
 import { connect } from 'react-redux';
 import banner from '../../images/banner.png';
@@ -42,6 +44,18 @@ export class App extends Component {
                 <CardContainer />
               </>
             }
+          </Route>
+          <Route exact path='/saved'>
+              <>
+                <Nav />
+                <PreviewContainer />
+              </>
+          </Route>
+          <Route exact path='/saved/:id'>
+              <>
+                <Nav />
+                <FavoriteContainer />
+              </>
           </Route>
           </>
         }
