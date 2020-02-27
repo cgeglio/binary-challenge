@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './CardContainer.scss';
 import { connect } from 'react-redux';
 import { getCards, getFortune } from '../../apiCalls';
-import { addFavorite, removeFavorite, login, addCards, addFortune, addReading } from '../../actions';
+import { addFavorite, removeFavorite, addCards, addFortune, addReading } from '../../actions';
 import Card from '../../components/Card/Card';
 import Loader from '../../components/Loader/Loader';
 import save from '../../images/save.png';
@@ -31,29 +31,34 @@ class CardContainer extends Component {
 
   addCurrentReading = () => {
     let id = Date.now();
-    let currentReading = {cards: this.props.cards, fortune: this.props.fortune, question: this.props.question, id: id, saved: false}
-    this.props.addReadingToStore(currentReading)
+    let currentReading = {cards: this.props.cards, fortune: this.props.fortune, question: this.props.question, id: id, saved: false};
+    this.props.addReadingToStore(currentReading);
   }
 
   updateSavedStatus = () => {
-    return this.state.icon === save ? this.saveReading() : this.removeReading();
+    return !this.props.currentReading.saved ? this.saveReading() : this.removeReading();
   }
 
   saveReading = () => {
     this.setState({icon: saved});
     this.props.currentReading.saved = true;
-    this.props.addReadingToFavorites(this.props.currentReading)
+    this.props.addReadingToFavorites(this.props.currentReading);
   }
 
   removeReading = () => {
     this.setState({icon: save});
     this.props.currentReading.saved = false;
-    this.props.removeReadingFromFavorites(this.props.currentReading)
+    this.props.removeReadingFromFavorites(this.props.currentReading);
+  }
+
+  determineIcon = () => {
+    return this.props.currentReading.saved ? saved : save;
   }
 
   render() {
+
     return (
-      !this.props.cards.length ? <Loader /> :
+      !this.props.fortune ? <Loader /> :
         <section className='card-container'>
           <section className='cards'>
             {this.props.cards.map(card => {
@@ -61,7 +66,7 @@ class CardContainer extends Component {
             })}
           </section>
           <section className='reading-details'>
-            <button onClick={() => this.updateSavedStatus()} className="save-btn"><img src={this.state.icon} alt="save reading icon" className="save-icon"/></button>
+            <button onClick={() => this.updateSavedStatus()} className="save-btn"><img src={this.determineIcon()} alt="save reading icon" className="save-icon"/></button>
             <div>
               <h2 className='question'>{this.props.question}</h2>
               <h2>{this.props.fortune}</h2>
