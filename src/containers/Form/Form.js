@@ -22,7 +22,7 @@ export class Form extends Component {
 
   completeLogin = () => {
     const id = Date.now();
-    this.props.addUser({username: this.state.username, id: id, favorites: []})
+    this.props.addUser({username: this.state.username, id: id})
     this.setState({username: '', password: '', error: null})
   }
 

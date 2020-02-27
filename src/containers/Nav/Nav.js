@@ -10,7 +10,7 @@ export const Nav = (props) => {
     <section className='nav-bar'>
       <img src={logo} alt="Golden City Tarot Logo" className='logo-img'/>
       <div className='nav-btn-container'>
-        <button className='nav-btn'>FAVORITES</button>
+        <button className='nav-btn'>FAVORITES | {props.favorites.length || 0}</button>
         {props.user.id ?
         <Link to='/'><button onClick={() => props.logoutUser(props.user)} className='nav-btn'>LOGOUT</button></Link>
         : <Link to='/'><button className='nav-btn'>LOGIN</button></Link>
@@ -21,7 +21,8 @@ export const Nav = (props) => {
 }
 
 const mapStateToProps = state => ({
-  user: state.user
+  user: state.user,
+  favorites: state.favorites
 })
 
 const mapDispatchToProps = dispatch => ({
