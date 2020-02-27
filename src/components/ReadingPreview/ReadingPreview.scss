@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css?family=Croissant+One&display=swap');
+@import "../../mixins.scss";
+
+.saved-preview {
+  @include flex();
+  position: relative;
+}
+
+.preview-cards {
+  display: flex;
+  flex-direction: row;
+  height: 200px;
+  overflow: hidden;
+}
+
+.preview-cards img {
+
+}
+
+.preview-question {
+  color: black;
+  margin-top: 90px;
+  position: absolute;
+}
+
+.preview-overlay {
+  align-self: center;
+  background-color: #D5A1EE;
+  height: 90%;
+  opacity: .3;
+  position: absolute;
+  transition: .5s ease;
+  width: 782px;
+}
+
+.view-reading-btn {
+  @include buttons();
+  bottom: 40px;
+  height: 28px;
+  left: 295px;
+  position: relative;
+  width: 160px;
+    &:hover {
+      background-color: white;
+      color: black;
+    }
+}
