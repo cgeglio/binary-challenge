@@ -7,7 +7,7 @@ const PreviewContainer = (props) => {
   return (
     <section className='preview-container'>
       <h2 className='saved-title'>Saved Readings</h2>
-      {!props.favorites.length ? <h2>You have not saved any readings yet.</h2> :
+      {!props.favorites.length ? <h2 className='saved-error'>You have not saved any readings yet.</h2> :
       props.favorites.map(favorite => {
         return <ReadingPreview key={favorite.id} reading={favorite} />
       })
