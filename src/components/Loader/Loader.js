@@ -1,8 +1,15 @@
 import React from 'react';
 import './Loader.scss';
+import crystal from '../../images/crystal.png';
+
 
 const Loader = () => {
-  return <p>hi</p>
+  return (
+    <section className='loader'>
+      <img src={crystal} alt="Two hands holding a crystal ball" className='crystal-ball-loader'/>
+      <h2 className='loader-msg'>Looking...</h2>
+    </section>
+  )
 }
 
 export default Loader
