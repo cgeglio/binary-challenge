@@ -4,7 +4,7 @@ import './ReadingPreview.scss';
 import { addReading } from '../../actions';
 import { connect } from 'react-redux'
 
-class ReadingPreview extends Component {
+export class ReadingPreview extends Component {
 
   updateCurrentReading = () => {
     this.props.makeSavedReadingCurrentReading(this.props.reading);
@@ -26,7 +26,7 @@ class ReadingPreview extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   makeSavedReadingCurrentReading: savedReading => (dispatch(addReading(savedReading)))
 })
 

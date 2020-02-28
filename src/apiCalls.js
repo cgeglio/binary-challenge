@@ -14,7 +14,7 @@ export const getFortune = () => {
   return fetch('http://fortunecookieapi.herokuapp.com/v1/fortunes/')
     .then(response => {
       if (!response.ok) {
-        throw Error('Error fetching cards')
+        throw Error('Error fetching fortune')
       }
       return response.json()
     })
