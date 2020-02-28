@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PreviewContainer PreviewContainer container/component should match the snapshot 1`] = `
+<section
+  className="preview-container"
+>
+  <h2
+    className="saved-title"
+  >
+    Saved Readings
+  </h2>
+  <Connect(ReadingPreview)
+    key="20"
+    reading={
+      Object {
+        "cards": Object {
+          "name": "The Magician",
+        },
+        "id": 20,
+      }
+    }
+  />
+</section>
+`;
