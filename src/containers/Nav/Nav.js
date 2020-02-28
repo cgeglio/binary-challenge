@@ -12,7 +12,7 @@ export const Nav = (props) => {
       <div className='nav-btn-container'>
         <Link to='/saved'><button className='nav-btn'>SAVED | {props.favorites.length || 0}</button></Link>
         {props.user.id ?
-        <Link to='/'><button onClick={() => props.logoutUser(props.user)} className='nav-btn'>LOGOUT</button></Link>
+        <Link to='/'><button onClick={() => props.logoutUser(props.user)} id='logout-btn' className='nav-btn'>LOGOUT</button></Link>
         : <Link to='/'><button className='nav-btn'>LOGIN</button></Link>
         }
       </div>
@@ -20,12 +20,12 @@ export const Nav = (props) => {
   )
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   user: state.user,
   favorites: state.favorites
 })
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   logoutUser: user => (dispatch(logout(user)))
 })
 
