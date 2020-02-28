@@ -21,6 +21,7 @@ export class Nav extends Component {
       <section className='nav-bar'>
         <img src={logo} alt="Golden City Tarot Logo" className='logo-img'/>
         <div className='nav-btn-container'>
+          <Link to='/deck'><button className='nav-btn'>DECK</button></Link>
           <Link to='/saved'><button className='nav-btn'>SAVED | {this.props.favorites.length || 0}</button></Link>
           {this.props.user.id ?
           <Link to='/'><button onClick={() => this.handleLogout()} id='logout-btn' className='nav-btn'>LOGOUT</button></Link>
