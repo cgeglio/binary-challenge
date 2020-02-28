@@ -18,6 +18,11 @@ export const addQuestion = question => ({
   question
 })
 
+export const removeQuestion = question => ({
+  type: 'REMOVE_QUESTION',
+  question
+})
+
 export const addFortune = fortune => ({
   type: 'ADD_FORTUNE',
   fortune
