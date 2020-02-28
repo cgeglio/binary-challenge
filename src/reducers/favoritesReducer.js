@@ -5,6 +5,8 @@ export const favorites = (state = [], action) => {
     case 'REMOVE_FAVORITE':
       let favorites = state.filter(favorite => favorite.id !== action.favorite.id);
       return favorites;
+    case 'RESET_FAVORITES':
+      return [];
     default:
       return state;
   }

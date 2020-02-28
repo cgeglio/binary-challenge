@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { addFavorite, removeFavorite } from '../../actions';
 import Card from '../../components/Card/Card';
 import Loader from '../../components/Loader/Loader';
+import { Link } from 'react-router-dom';
 import save from '../../images/save.png';
 import saved from '../../images/saved.png';
 
@@ -37,19 +38,20 @@ export class FavoriteContainer extends Component {
 
     return (
       !this.props.fortune ? <Loader /> :
-        <section className='favorite-container'>
-          <section className='cards'>
-            {this.props.currentReading.cards.map(card => {
-              return <Card key={card.name_short + card.value} card={card} />
-            })}
-          </section>
-          <section className='reading-details'>
-            <button onClick={() => this.updateSavedStatus()} className="save-btn"><img src={this.determineIcon()} alt="save reading icon" className="save-icon"/></button>
-            <div>
-              <h2 className='question'>{this.props.currentReading.question}</h2>
-              <h2>{this.props.currentReading.fortune}</h2>
-            </div>
-          </section>
+      <section className='favorite-container'>
+        <section className='cards'>
+          {this.props.currentReading.cards.map(card => {
+            return <Card key={card.name_short + card.value} card={card} />
+          })}
+        </section>
+        <section className='reading-details'>
+          <button onClick={() => this.updateSavedStatus()} className="save-btn"><img src={this.determineIcon()} alt="save reading icon" className="save-icon"/></button>
+          <div>
+            <h2 className='question'>{this.props.currentReading.question}</h2>
+            <h2>{this.props.currentReading.fortune}</h2>
+          </div>      
+        </section>
+        <Link to='/saved'><button className='back-btn'>Back to Saved</button></Link>
       </section>
     )
   }

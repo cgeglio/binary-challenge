@@ -3,7 +3,6 @@ import { Route, Redirect } from 'react-router-dom';
 import './App.scss';
 import Form from '../Form/Form';
 import Nav from '../Nav/Nav';
-import Loader from '../../components/Loader/Loader';
 import ReadingStarter from '../../components/ReadingStarter/ReadingStarter';
 import PreviewContainer from '../PreviewContainer/PreviewContainer';
 import FavoriteContainer from '../FavoriteContainer/FavoriteContainer';
@@ -30,12 +29,12 @@ export class App extends Component {
         {!this.props.user.username ? <Redirect to='/' /> :
           <>
           <Route exact path='/home'>
-              {this.props.question ? <Redirect to='/reading' /> :
+            {this.props.question ? <Redirect to='/reading' /> :
                 <>
                   <Nav />
                   <ReadingStarter />
                 </>
-              }
+            }
           </Route>
           <Route exact path='/reading'>
             {!this.props.question ? <Redirect to='/home' /> :
@@ -46,16 +45,16 @@ export class App extends Component {
             }
           </Route>
           <Route exact path='/saved'>
-              <>
-                <Nav />
-                <PreviewContainer />
-              </>
+            <>
+              <Nav />
+              <PreviewContainer />
+            </>
           </Route>
           <Route exact path='/saved/:id'>
-              <>
-                <Nav />
-                <FavoriteContainer />
-              </>
+            <>
+              <Nav />
+              <FavoriteContainer />
+            </>
           </Route>
           </>
         }
@@ -67,7 +66,8 @@ export class App extends Component {
 export const mapStateToProps = state => ({
   user: state.user,
   cards: state.cards,
-  question: state.question
+  question: state.question,
+  currentReading: state.currentReading
 })
 
 export default connect(mapStateToProps)(App);

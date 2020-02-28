@@ -41,5 +41,14 @@ exports[`FavoriteContainer FavoriteContainer container/component should match th
       </h2>
     </div>
   </section>
+  <Link
+    to="/saved"
+  >
+    <button
+      className="back-btn"
+    >
+      Back to Saved
+    </button>
+  </Link>
 </section>
 `;

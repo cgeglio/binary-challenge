@@ -41,6 +41,16 @@ describe('actions', () => {
     expect(result).toEqual(expectedAction)
   })
 
+  it('should have a type REMOVE_QUESTION', () => {
+    const question = 'Is bithcuits a good kitty?'
+    const expectedAction = {
+      type: 'REMOVE_QUESTION',
+      question
+    }
+    const result = actions.removeQuestion(question)
+    expect(result).toEqual(expectedAction)
+  })
+
   it('should have a type ADD_FORTUNE', () => {
     const fortune = 'This too shall pass.'
     const expectedAction = {

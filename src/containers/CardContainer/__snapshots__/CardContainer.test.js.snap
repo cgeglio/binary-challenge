@@ -33,12 +33,23 @@ exports[`CardContainer CardContainer container/component should match the snapsh
       <h2
         className="question"
       >
-        Is the sky blue?
+        Is Bithcuits a good kitty?
       </h2>
       <h2>
         Keep your friends close and your enemies closer
       </h2>
     </div>
   </section>
+  <Link
+    to="/home"
+  >
+    <button
+      className="back-btn"
+      id="ask-another"
+      onClick={[Function]}
+    >
+      Ask Another Question
+    </button>
+  </Link>
 </section>
 `;
