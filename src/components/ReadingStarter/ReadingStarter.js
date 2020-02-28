@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import './ReadingStarter.scss';
 import { connect } from 'react-redux';
 import { addQuestion } from '../../actions'

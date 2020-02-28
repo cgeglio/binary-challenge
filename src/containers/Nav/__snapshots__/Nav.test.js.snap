@@ -13,6 +13,24 @@ exports[`Nav Nav container/component should match the snapshot 1`] = `
     className="nav-btn-container"
   >
     <Link
+      to="/about"
+    >
+      <button
+        className="nav-btn"
+      >
+        ABOUT
+      </button>
+    </Link>
+    <Link
+      to="/deck"
+    >
+      <button
+        className="nav-btn"
+      >
+        DECK
+      </button>
+    </Link>
+    <Link
       to="/saved"
     >
       <button
