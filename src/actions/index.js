@@ -13,6 +13,11 @@ export const addCards = cards => ({
   cards
 })
 
+export const removeCards = cards => ({
+  type: 'REMOVE_CARDS',
+  cards
+})
+
 export const addQuestion = question => ({
   type: 'ADD_QUESTION',
   question
@@ -28,8 +33,18 @@ export const addFortune = fortune => ({
   fortune
 })
 
+export const removeFortune = fortune => ({
+  type: 'REMOVE_FORTUNE',
+  fortune
+})
+
 export const addReading = currentReading => ({
   type: 'ADD_READING',
+  currentReading
+})
+
+export const removeReading = currentReading => ({
+  type: 'REMOVE_READING',
   currentReading
 })
 
@@ -41,4 +56,9 @@ export const addFavorite = favorite => ({
 export const removeFavorite = favorite => ({
   type: 'REMOVE_FAVORITE',
   favorite
+})
+
+export const resetFavorites = favorites => ({
+  type: 'RESET_FAVORITES',
+  favorites
 })
