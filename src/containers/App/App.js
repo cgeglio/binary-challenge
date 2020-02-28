@@ -5,6 +5,7 @@ import Form from '../Form/Form';
 import Nav from '../Nav/Nav';
 import ReadingStarter from '../../components/ReadingStarter/ReadingStarter';
 import Deck from '../../components/Deck/Deck';
+import About from '../../components/About/About';
 import PreviewContainer from '../PreviewContainer/PreviewContainer';
 import FavoriteContainer from '../FavoriteContainer/FavoriteContainer';
 import CardContainer from '../CardContainer/CardContainer';
@@ -55,6 +56,12 @@ export class App extends Component {
             <>
               <Nav />
               <Deck />
+            </>
+          </Route>
+          <Route exact path='/about'>
+            <>
+              <Nav />
+              <About />
             </>
           </Route>
           <Route exact path='/saved/:id'>
