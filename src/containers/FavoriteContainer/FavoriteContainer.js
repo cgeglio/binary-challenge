@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import './FavoriteContainer.scss';
 import { connect } from 'react-redux';
-import { getCards, getFortune } from '../../apiCalls';
-import { addFavorite, removeFavorite, addCards, addFortune } from '../../actions';
+import { addFavorite, removeFavorite } from '../../actions';
 import Card from '../../components/Card/Card';
 import Loader from '../../components/Loader/Loader';
 import save from '../../images/save.png';
 import saved from '../../images/saved.png';
 
-class FavoriteContainer extends Component {
+export class FavoriteContainer extends Component {
   constructor() {
     super();
     this.state={icon: save}
@@ -41,7 +40,7 @@ class FavoriteContainer extends Component {
         <section className='favorite-container'>
           <section className='cards'>
             {this.props.currentReading.cards.map(card => {
-              return <Card key={card.name_short} card={card} />
+              return <Card key={card.name_short + card.value} card={card} />
             })}
           </section>
           <section className='reading-details'>
@@ -56,17 +55,12 @@ class FavoriteContainer extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  user: state.user,
-  cards: state.cards,
-  question: state.question,
+export const mapStateToProps = state => ({
   fortune: state.fortune,
   currentReading: state.currentReading
 })
 
-const mapDispatchToProps = dispatch => ({
-  addCardsToStore: cards => (dispatch(addCards(cards))),
-  addFortuneToStore: fortune => (dispatch(addFortune(fortune))),
+export const mapDispatchToProps = dispatch => ({
   addReadingToFavorites: favorite => (dispatch(addFavorite(favorite))),
   removeReadingFromFavorites: favorite => (dispatch(removeFavorite(favorite)))
 })
