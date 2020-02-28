@@ -51,7 +51,7 @@ export class Form extends Component {
 }
 
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   addUser: user => (dispatch(login(user)))
 })
 

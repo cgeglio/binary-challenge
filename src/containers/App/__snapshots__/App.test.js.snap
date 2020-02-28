@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should match the snapshot 1`] = `
+<main>
+  <Route
+    exact={true}
+    path="/"
+  >
+    <Redirect
+      to="/home"
+    />
+  </Route>
+  <Route
+    exact={true}
+    path="/home"
+  >
+    <Redirect
+      to="/reading"
+    />
+  </Route>
+  <Route
+    exact={true}
+    path="/reading"
+  >
+    <Connect(Nav) />
+    <Connect(CardContainer) />
+  </Route>
+  <Route
+    exact={true}
+    path="/saved"
+  >
+    <Connect(Nav) />
+    <Connect(PreviewContainer) />
+  </Route>
+  <Route
+    exact={true}
+    path="/saved/:id"
+  >
+    <Connect(Nav) />
+    <Connect(FavoriteContainer) />
+  </Route>
+</main>
+`;

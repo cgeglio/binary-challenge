@@ -3,7 +3,7 @@ import './PreviewContainer.scss';
 import { connect } from 'react-redux';
 import ReadingPreview from '../../components/ReadingPreview/ReadingPreview';
 
-const PreviewContainer = (props) => {
+export const PreviewContainer = (props) => {
   return (
     <section className='preview-container'>
       <h2 className='saved-title'>Saved Readings</h2>
@@ -16,7 +16,7 @@ const PreviewContainer = (props) => {
   )
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   favorites: state.favorites
 })
 

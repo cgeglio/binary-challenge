@@ -64,7 +64,7 @@ export class App extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   user: state.user,
   cards: state.cards,
   question: state.question
