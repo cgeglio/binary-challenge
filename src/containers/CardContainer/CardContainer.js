@@ -8,7 +8,7 @@ import Loader from '../../components/Loader/Loader';
 import save from '../../images/save.png';
 import saved from '../../images/saved.png';
 
-class CardContainer extends Component {
+export class CardContainer extends Component {
   constructor() {
     super();
     this.state={icon: save}
@@ -77,15 +77,14 @@ class CardContainer extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  user: state.user,
+export const mapStateToProps = state => ({
   cards: state.cards,
   question: state.question,
   fortune: state.fortune,
   currentReading: state.currentReading
 })
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   addCardsToStore: cards => (dispatch(addCards(cards))),
   addFortuneToStore: fortune => (dispatch(addFortune(fortune))),
   addReadingToStore: currentReading => (dispatch(addReading(currentReading))),

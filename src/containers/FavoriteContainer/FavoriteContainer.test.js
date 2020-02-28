@@ -35,6 +35,10 @@ describe('FavoriteContainer', () => {
       expect(wrapper).toMatchSnapshot();
     });
 
+    it('should start with a default state', () => {
+      expect(wrapper.state()).toEqual({icon: save})
+    })
+
     it('should call saveReading if the reading has not been saved yet', () => {
       wrapper.instance().saveReading = jest.fn();
       wrapper.instance().updateSavedStatus();
