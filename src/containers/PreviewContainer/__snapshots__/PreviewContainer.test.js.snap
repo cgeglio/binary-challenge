@@ -20,5 +20,15 @@ exports[`PreviewContainer PreviewContainer container/component should match the 
       }
     }
   />
+  <Link
+    to="/home"
+  >
+    <button
+      className="back-btn"
+      onClick={[Function]}
+    >
+      Home
+    </button>
+  </Link>
 </section>
 `;

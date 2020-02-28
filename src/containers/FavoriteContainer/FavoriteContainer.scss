@@ -3,3 +3,15 @@
 .favorite-container {
   @include flex();
 }
+
+.back-btn {
+  @include buttons();
+  background-color: #D5A1EE;
+  color: black;
+  margin-top: 50px;
+  width: 135px;
+
+    &:hover {
+      background-color: white;
+    }
+}
