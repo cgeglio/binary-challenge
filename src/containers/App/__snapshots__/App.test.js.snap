@@ -34,6 +34,20 @@ exports[`App should match the snapshot 1`] = `
   </Route>
   <Route
     exact={true}
+    path="/deck"
+  >
+    <Connect(Nav) />
+    <Deck />
+  </Route>
+  <Route
+    exact={true}
+    path="/about"
+  >
+    <Connect(Nav) />
+    <About />
+  </Route>
+  <Route
+    exact={true}
     path="/saved/:id"
   >
     <Connect(Nav) />
