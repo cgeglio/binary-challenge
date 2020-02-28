@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import './CardContainer.scss';
 import { connect } from 'react-redux';
 import { getCards, getFortune } from '../../apiCalls';
-import { addFavorite, removeFavorite, addCards, addFortune, addReading } from '../../actions';
+import { addFavorite, removeFavorite, addCards, addFortune, addReading, removeQuestion } from '../../actions';
 import Card from '../../components/Card/Card';
 import Loader from '../../components/Loader/Loader';
+import { Link } from 'react-router-dom';
 import save from '../../images/save.png';
 import saved from '../../images/saved.png';
 
@@ -55,23 +56,28 @@ export class CardContainer extends Component {
     return this.props.currentReading.saved ? saved : save;
   }
 
+  resetQuestion = () => {
+    this.props.resetQuestionInStore(this.props.question);
+  }
+
   render() {
 
     return (
       !this.props.fortune ? <Loader /> :
-        <section className='card-container'>
-          <section className='cards'>
-            {this.props.cards.map(card => {
-              return <Card key={card.name_short} card={card} />
-            })}
-          </section>
-          <section className='reading-details'>
-            <button onClick={() => this.updateSavedStatus()} className="save-btn"><img src={this.determineIcon()} alt="save reading icon" className="save-icon"/></button>
-            <div>
-              <h2 className='question'>{this.props.question}</h2>
-              <h2>{this.props.fortune}</h2>
-            </div>
-          </section>
+      <section className='card-container'>
+        <section className='cards'>
+          {this.props.cards.map(card => {
+            return <Card key={card.name_short} card={card} />
+          })}
+        </section>
+        <section className='reading-details'>
+          <button onClick={() => this.updateSavedStatus()} className="save-btn"><img src={this.determineIcon()} alt="save reading icon" className="save-icon"/></button>
+          <div>
+            <h2 className='question'>{this.props.currentReading.question}</h2>
+            <h2>{this.props.fortune}</h2>
+          </div>
+        </section>
+        <Link to='/home'><button onClick={() => this.resetQuestion()} id='ask-another' className='back-btn'>Ask Another Question</button></Link>
       </section>
     )
   }
@@ -89,7 +95,8 @@ export const mapDispatchToProps = dispatch => ({
   addFortuneToStore: fortune => (dispatch(addFortune(fortune))),
   addReadingToStore: currentReading => (dispatch(addReading(currentReading))),
   addReadingToFavorites: favorite => (dispatch(addFavorite(favorite))),
-  removeReadingFromFavorites: favorite => (dispatch(removeFavorite(favorite)))
+  removeReadingFromFavorites: favorite => (dispatch(removeFavorite(favorite))),
+  resetQuestionInStore: question => (dispatch(removeQuestion(question)))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(CardContainer)
