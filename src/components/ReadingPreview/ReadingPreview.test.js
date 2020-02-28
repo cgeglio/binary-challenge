@@ -7,7 +7,6 @@ describe('ReadingPreview', () => {
 
   let wrapper;
   let mockReading;
-  let mockState;
 
   beforeEach(() => {
     mockReading = {cards: [{name: 'The Moon'}], question: 'Is bithcuits a bad kitty?', fortune: 'Cheaters never prosper', id: 30};
