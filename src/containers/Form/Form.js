@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './Form.scss';
 import { connect } from 'react-redux';
 import { login } from '../../actions'
-
+import PropTypes from 'prop-types';
 
 export class Form extends Component {
   constructor() {
@@ -55,4 +55,8 @@ export const mapDispatchToProps = dispatch => ({
   addUser: user => (dispatch(login(user)))
 })
 
-export default connect(null, mapDispatchToProps)(Form)
+export default connect(null, mapDispatchToProps)(Form);
+
+Form.propTypes = {
+  addUser: PropTypes.func
+}

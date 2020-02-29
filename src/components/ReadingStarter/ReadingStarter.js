@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './ReadingStarter.scss';
 import { connect } from 'react-redux';
-import { addQuestion } from '../../actions'
+import { addQuestion } from '../../actions';
 import golden from '../../images/golden.png';
+import PropTypes from 'prop-types';
 
 export class ReadingStarter extends Component {
   constructor() {
@@ -56,4 +57,9 @@ export const mapDispatchToProps = dispatch => ({
   updateQuestion: question => (dispatch(addQuestion(question)))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(ReadingStarter)
+export default connect(mapStateToProps, mapDispatchToProps)(ReadingStarter);
+
+ReadingStarter.propTypes = {
+  user: PropTypes.object,
+  updateQuestion: PropTypes.func
+}

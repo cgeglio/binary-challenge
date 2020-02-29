@@ -4,6 +4,7 @@ import './Nav.scss';
 import { connect } from 'react-redux';
 import { logout, resetFavorites, removeCards, removeReading, removeFortune, removeQuestion } from '../../actions';
 import logo from '../../images/GoldenCity.png';
+import PropTypes from 'prop-types';
 
 export class Nav extends Component {
 
@@ -52,4 +53,19 @@ export const mapDispatchToProps = dispatch => ({
   resetFavorites: favorites => (dispatch(resetFavorites(favorites))),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Nav)
+export default connect(mapStateToProps, mapDispatchToProps)(Nav);
+
+Nav.propTypes = {
+  user: PropTypes.object,
+  favorites: PropTypes.array,
+  question: PropTypes.string,
+  fortune: PropTypes.string,
+  cards: PropTypes.array,
+  currentReading: PropTypes.object,
+  logoutUser: PropTypes.func,
+  removeQuestion: PropTypes.func,
+  removeFortune: PropTypes.func,
+  removeCards: PropTypes.func,
+  removeReading: PropTypes.func,
+  resetFavorites: PropTypes.func
+}

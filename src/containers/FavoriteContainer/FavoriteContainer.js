@@ -7,6 +7,7 @@ import Loader from '../../components/Loader/Loader';
 import { Link } from 'react-router-dom';
 import save from '../../images/save.png';
 import saved from '../../images/saved.png';
+import PropTypes from 'prop-types';
 
 export class FavoriteContainer extends Component {
   constructor() {
@@ -48,7 +49,7 @@ export class FavoriteContainer extends Component {
         <section className='cards'>
           {this.props.currentReading.cards.map(card => {
             this.addFlipId()
-            return <Card key={card.name_short + card.value} card={card} id={this.state.flipped}/>
+            return <Card key={card.name_short} card={card} id={this.state.flipped}/>
           })}
         </section>
         <section className='reading-details'>
@@ -74,4 +75,11 @@ export const mapDispatchToProps = dispatch => ({
   removeReadingFromFavorites: favorite => (dispatch(removeFavorite(favorite)))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(FavoriteContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(FavoriteContainer);
+
+FavoriteContainer.propTypes = {
+  currentReading: PropTypes.object,
+  fortune: PropTypes.string,
+  addReadingToFavorites: PropTypes.func,
+  removeReadingFromFavorites: PropTypes.func
+}
