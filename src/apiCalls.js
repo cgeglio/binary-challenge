@@ -23,7 +23,7 @@ export const getDeck = () => {
 }
 
 export const getFortune = () => {
-  return fetch('http://fortunecookieapi.herokuapp.com/v1/fortunes/')
+  return fetch('https://fortunecookieapi.herokuapp.com/v1/fortunes/')
     .then(response => {
       if (!response.ok) {
         throw Error('Error fetching fortune')
