@@ -14,9 +14,10 @@ export class ReadingPreview extends Component {
   render() {
     return (
       <article className='saved-preview'>
+        <div className='preview-overlay'></div>
         <div className='preview-cards'>
           {this.props.reading.cards.map(card => {
-            return <div key={card.name}><div className='preview-overlay'></div><img src={process.env.PUBLIC_URL + `/cardAssets/${card.name_short}.jpg`} alt="Tarot card" key={card.name} /></div>
+            return <div key={card.name}><img src={process.env.PUBLIC_URL + `/cardAssets/${card.name_short}.jpg`} alt="Tarot card" key={card.name} /></div>
           })
         }
         </div>
