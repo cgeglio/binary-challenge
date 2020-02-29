@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Croissant+One&display=swap');
+@import "../../variables.scss";
 @import "../../mixins.scss";
 
 .login-form {
@@ -27,8 +27,8 @@
 }
 
 .error-message {
-  color: #D5A1EE;
-  font-family: 'Croissant One';
+  color: $primary-color;
+  font-family: $primary-font;
   font-size: 1.5em;
   margin-top: 150px;
 }
