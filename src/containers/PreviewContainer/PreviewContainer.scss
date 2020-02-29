@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Croissant+One&display=swap');
+@import "../../variables.scss";
 @import "../../mixins.scss";
 
 .preview-container {
@@ -6,11 +6,11 @@
 }
 
 .saved-title {
-  font-family: 'Croissant One';
+
   font-size: 1.5em;
   margin-bottom: 30px;
 }
 
 .saved-error {
-  color: #D5A1EE;
+  color: $primary-color;
 }

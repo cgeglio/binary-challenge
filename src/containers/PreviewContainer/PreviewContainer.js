@@ -13,7 +13,7 @@ export class PreviewContainer extends Component {
 
   render() {
     return (
-      <section className='preview-container'>
+      <section className='preview-container fade-in'>
         <h2 className='saved-title'>Saved Readings</h2>
         {!this.props.favorites.length ? <h2 className='saved-error'>You have not saved any readings yet.</h2> :
         this.props.favorites.map(favorite => {
