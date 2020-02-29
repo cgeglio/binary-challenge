@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Croissant+One&display=swap');
+@import "../../variables.scss";
 @import "../../mixins.scss";
 
 .about {
@@ -13,7 +13,7 @@
 }
 
 .about h2 {
- font-family: 'Croissant One';
+ font-family: $primary-font;
  font-size: 2em;
  margin-bottom: 20px;
 }

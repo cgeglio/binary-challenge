@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Croissant+One&display=swap');
+@import "../../variables.scss";
 @import "../../mixins.scss";
 
 .loader {
@@ -13,8 +13,42 @@
 
 .loader-msg {
   color: black;
-  font-family: 'Croissant One';
+  font-family: $primary-font;
   font-size: 2em;
   margin-top: 300px;
   position: relative;
+}
+
+.pulsate-fwd {
+	-webkit-animation: pulsate-fwd 0.5s infinite both;
+	        animation: pulsate-fwd 0.5s infinite both;
+}
+
+@-webkit-keyframes pulsate-fwd {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+@keyframes pulsate-fwd {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
 }

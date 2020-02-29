@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Croissant+One&display=swap');
+@import "../../variables.scss";
 
 article {
   margin: 10px 25px;
@@ -11,7 +11,7 @@ article img {
 }
 
 .overlay {
-  background-color: #D5A1EE;
+  background-color: $primary-color;
   bottom: 0;
   left: 0;
   height: 100%;
@@ -21,8 +21,16 @@ article img {
   transition: .5s ease;
   top: 0;
   width: 100%;
+  z-index: 5;
+
+  -moz-transform: scale(-1, 1);
+  -webkit-transform: scale(-1, 1);
+  -o-transform: scale(-1, 1);
+  -ms-transform: scale(-1, 1);
+  transform: scale(-1, 1);
 
     &:hover {
+      cursor: pointer;
       opacity: .9;
     }
 }
@@ -48,11 +56,11 @@ article img {
 
 h3 {
   font-size: .8em;
-  font-family: 'Croissant One';
+  font-family: $primary-font;
 }
 
 h4 {
-  font-family: 'Croissant One';
+  font-family: $primary-font;
   font-size: .6em;
   font-weight: bold;
   margin: 10px 0px 5px 0px;
@@ -63,4 +71,57 @@ p {
   font-size: .6em;
   line-height: 1.3;
   text-align: left;
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 190px;
+  height: 340px;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+#on-flip {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background-color: black;
+  color: black;
+  pointer-events: none;
+  z-index: 7;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+.fade-in {
+  animation: fadeIn ease 2s;
+  -webkit-animation: fadeIn ease 2s;
+}
+
+@keyframes fadeIn{
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
 }

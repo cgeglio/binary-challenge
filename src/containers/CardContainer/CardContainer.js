@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './CardContainer.scss';
 import { connect } from 'react-redux';
 import { getCards, getFortune } from '../../apiCalls';
-import { addFavorite, removeFavorite, addCards, addFortune, addReading, removeQuestion } from '../../actions';
+import { addFavorite, removeFavorite, addCards, addFortune, addReading, removeCards, removeQuestion } from '../../actions';
 import Card from '../../components/Card/Card';
 import Loader from '../../components/Loader/Loader';
 import { Link } from 'react-router-dom';
@@ -12,12 +12,12 @@ import saved from '../../images/saved.png';
 export class CardContainer extends Component {
   constructor() {
     super();
-    this.state={icon: save}
+    this.state={icon: save, flipped: ''}
   }
 
   componentDidMount() {
     getCards()
-      .then(cards=> this.props.addCardsToStore(cards.cards))
+      .then(cards => this.props.addCardsToStore(cards.cards))
       .then(() => this.fetchFortune())
       .catch(error => console.log(error))
   }
@@ -27,6 +27,7 @@ export class CardContainer extends Component {
     getFortune()
       .then(fortunes => this.props.addFortuneToStore(fortunes[fortuneIndex].message))
       .then(() => this.addCurrentReading())
+      .then(() => this.addFlipId())
       .catch(error => console.log(error))
   }
 
@@ -56,18 +57,26 @@ export class CardContainer extends Component {
     return this.props.currentReading.saved ? saved : save;
   }
 
-  resetQuestion = () => {
+  resetInfo = () => {
     this.props.resetQuestionInStore(this.props.question);
+    this.props.removeCards(this.props.cards);
+  }
+
+  addFlipId = () => {
+    setTimeout(() => {
+      this.setState({flipped: 'on-flip'})
+    }, 1300)
   }
 
   render() {
 
     return (
       !this.props.fortune ? <Loader /> :
-      <section className='card-container'>
+      <section className='card-container fade-in'>
         <section className='cards'>
           {this.props.cards.map(card => {
-            return <Card key={card.name_short} card={card} />
+            this.addFlipId()
+            return <Card key={card.name_short} card={card} id={this.state.flipped}/>
           })}
         </section>
         <section className='reading-details'>
@@ -77,7 +86,7 @@ export class CardContainer extends Component {
             <h2>{this.props.fortune}</h2>
           </div>
         </section>
-        <Link to='/home'><button onClick={() => this.resetQuestion()} id='ask-another' className='back-btn'>Ask Another Question</button></Link>
+        <Link to='/home'><button onClick={() => this.resetInfo()} id='ask-another' className='back-btn'>Ask Another Question</button></Link>
       </section>
     )
   }
@@ -94,6 +103,7 @@ export const mapDispatchToProps = dispatch => ({
   addCardsToStore: cards => (dispatch(addCards(cards))),
   addFortuneToStore: fortune => (dispatch(addFortune(fortune))),
   addReadingToStore: currentReading => (dispatch(addReading(currentReading))),
+  removeCards: cards => (dispatch(removeCards(cards))),
   addReadingToFavorites: favorite => (dispatch(addFavorite(favorite))),
   removeReadingFromFavorites: favorite => (dispatch(removeFavorite(favorite))),
   resetQuestionInStore: question => (dispatch(removeQuestion(question)))

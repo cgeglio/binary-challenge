@@ -4,8 +4,8 @@ import crystal from '../../images/crystal.png';
 
 const Loader = () => {
   return (
-    <section className='loader'>
-      <img src={crystal} alt="Two hands holding a crystal ball" className='crystal-ball-loader'/>
+    <section className='loader pulsate-fwd' >
+      <img src={crystal} alt="Two hands holding a crystal ball" className='crystal-ball-loader' />
       <h2 className='loader-msg'>Looking...</h2>
     </section>
   )

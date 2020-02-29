@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Croissant+One&display=swap');
+@import "../../variables.scss";
 @import "../../mixins.scss";
 
 .saved-preview {
@@ -13,10 +13,6 @@
   overflow: hidden;
 }
 
-.preview-cards img {
-
-}
-
 .preview-question {
   color: black;
   margin-top: 90px;
@@ -25,7 +21,7 @@
 
 .preview-overlay {
   align-self: center;
-  background-color: #D5A1EE;
+  background-color: $primary-color;
   height: 90%;
   opacity: .3;
   position: absolute;

@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 import Loader from '../../components/Loader/Loader';
 import './Deck.scss';
 import { getDeck } from '../../apiCalls';
-import Card from '../Card/Card'
+import Card from '../../components/Card/Card';
+import { removeQuestion } from '../../actions';
+import { connect } from 'react-redux';
 
 class Deck extends Component {
   constructor() {
@@ -22,13 +24,17 @@ class Deck extends Component {
       !this.state.deck.length ? <Loader /> :
       <section className='deck'>
         <h2 className='deck-title'>The Tarot Deck</h2>
-        <div className='btn-container'><Link to='/home'><button className='back-btn'>Home</button></Link></div>
+        <div className='btn-container'><Link to='/home'><button onClick={() => this.props.resetQuestion('question')} className='back-btn'>Home</button></Link></div>
         {this.state.deck.map(card => {
-          return <Card key={card.name_short} card={card} />
+          return <Card key={card.name_short} card={card} id={this.props.flipped}/>
         })}
       </section>
     )
   }
 }
 
-export default Deck;
+export const mapDispatchToProps = dispatch => ({
+  resetQuestion: question => (dispatch(removeQuestion(question)))
+})
+
+export default connect(null, mapDispatchToProps)(Deck);

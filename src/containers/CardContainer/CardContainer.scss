@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Croissant+One&display=swap');
+@import "../../variables.scss";
 @import "../../mixins.scss";
 
 .card-container {
@@ -6,8 +6,8 @@
 }
 
 .question {
-  color: #D5A1EE;
-  font-family: 'Croissant One';
+  color: #C7A2CD;
+  font-family: $primary-font;
   margin-bottom: 25px;
 }
 
@@ -39,4 +39,8 @@
 #ask-another {
   height: 35px;
   width: 200px;
+}
+
+.card-container .back-btn {
+  margin-top: 40px;
 }

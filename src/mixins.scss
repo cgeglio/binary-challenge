@@ -1,13 +1,15 @@
+@import "./variables.scss";
+
 @mixin buttons() {
   background-color: black;
   border: 0;
   border-radius: 3px;
   color: white;
-  font-family: 'Croissant One';
+  font-family: $primary-font;
   font-size: 1em;
 
   &:hover {
-    background-color: #D5A1EE;
+    background-color: $primary-color;
     color: black;
     cursor: pointer;
   }
