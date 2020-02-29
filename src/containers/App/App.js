@@ -4,8 +4,8 @@ import './App.scss';
 import Form from '../Form/Form';
 import Nav from '../Nav/Nav';
 import ReadingStarter from '../../components/ReadingStarter/ReadingStarter';
-import Deck from '../../components/Deck/Deck';
-import About from '../../components/About/About';
+import Deck from '../Deck/Deck';
+import About from '../About/About';
 import PreviewContainer from '../PreviewContainer/PreviewContainer';
 import FavoriteContainer from '../FavoriteContainer/FavoriteContainer';
 import CardContainer from '../CardContainer/CardContainer';
@@ -15,8 +15,19 @@ import crystal from '../../images/crystal.png';
 
 
 export class App extends Component {
+  constructor() {
+    super();
+    this.state={flipped: ''}
+  }
+
+  addFlipId = () => {
+    setTimeout(() => {
+      this.setState({flipped: 'on-flip'})
+    }, 3000)
+  }
 
   render() {
+
     return (
       <main>
         <Route exact path="/">
@@ -53,9 +64,10 @@ export class App extends Component {
             </>
           </Route>
           <Route exact path='/deck'>
+            {this.addFlipId()}
             <>
               <Nav />
-              <Deck />
+              <Deck flipped={this.state.flipped}/>
             </>
           </Route>
           <Route exact path='/about'>
@@ -67,7 +79,7 @@ export class App extends Component {
           <Route exact path='/saved/:id'>
             <>
               <Nav />
-              <FavoriteContainer />
+              <FavoriteContainer flipped={this.state.flipped}/>
             </>
           </Route>
           </>
