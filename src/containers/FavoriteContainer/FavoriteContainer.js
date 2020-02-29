@@ -11,7 +11,7 @@ import saved from '../../images/saved.png';
 export class FavoriteContainer extends Component {
   constructor() {
     super();
-    this.state={icon: save}
+    this.state={icon: save, flipped: ''}
   }
 
   updateSavedStatus = () => {
@@ -34,14 +34,21 @@ export class FavoriteContainer extends Component {
     return this.props.currentReading.saved ? saved : save;
   }
 
+  addFlipId = () => {
+    setTimeout(() => {
+      this.setState({flipped: 'on-flip'})
+    }, 1300)
+  }
+
   render() {
 
     return (
       !this.props.fortune ? <Loader /> :
-      <section className='favorite-container'>
+      <section className='favorite-container fade-in'>
         <section className='cards'>
           {this.props.currentReading.cards.map(card => {
-            return <Card key={card.name_short + card.value} card={card} />
+            this.addFlipId()
+            return <Card key={card.name_short + card.value} card={card} id={this.state.flipped}/>
           })}
         </section>
         <section className='reading-details'>
@@ -49,7 +56,7 @@ export class FavoriteContainer extends Component {
           <div>
             <h2 className='question'>{this.props.currentReading.question}</h2>
             <h2>{this.props.currentReading.fortune}</h2>
-          </div>      
+          </div>
         </section>
         <Link to='/saved'><button className='back-btn'>Back to Saved</button></Link>
       </section>
