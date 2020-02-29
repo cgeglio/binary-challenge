@@ -6,6 +6,7 @@ import { getDeck } from '../../apiCalls';
 import Card from '../../components/Card/Card';
 import { removeQuestion } from '../../actions';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 class Deck extends Component {
   constructor() {
@@ -38,3 +39,8 @@ export const mapDispatchToProps = dispatch => ({
 })
 
 export default connect(null, mapDispatchToProps)(Deck);
+
+Deck.propTypes = {
+  resetQuestion: PropTypes.func,
+  flipped: PropTypes.string
+}

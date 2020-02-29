@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { removeQuestion } from '../../actions';
 import ReadingPreview from '../../components/ReadingPreview/ReadingPreview';
+import PropTypes from 'prop-types';
 
 export class PreviewContainer extends Component {
 
@@ -35,4 +36,10 @@ export const mapDispatchToProps = dispatch => ({
   resetQuestionInStore: question => (dispatch(removeQuestion(question)))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(PreviewContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(PreviewContainer);
+
+PreviewContainer.propTypes = {
+  favorites: PropTypes.array,
+  question: PropTypes.string,
+  resetQuestionInStore: PropTypes.func
+}

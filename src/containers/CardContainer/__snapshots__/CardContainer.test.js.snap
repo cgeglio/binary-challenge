@@ -2,7 +2,7 @@
 
 exports[`CardContainer CardContainer container/component should match the snapshot 1`] = `
 <section
-  className="card-container"
+  className="card-container fade-in"
 >
   <section
     className="cards"
@@ -14,6 +14,7 @@ exports[`CardContainer CardContainer container/component should match the snapsh
           "value": 8,
         }
       }
+      id=""
     />
   </section>
   <section

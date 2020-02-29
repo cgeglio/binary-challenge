@@ -1,27 +1,39 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Card should match the snapshot 1`] = `
-<article>
-  <img
-    alt="Tarot card"
-    src="/cardAssets/undefined.jpg"
-  />
+<article
+  className="flip-card fade-in"
+>
   <div
-    className="overlay"
+    className="flip-card-inner"
   >
+    <img
+      alt="Tarot card"
+      className="flip-card-back"
+      src="/cardAssets/undefined.jpg"
+    />
     <div
-      className="card-details"
+      className="overlay"
     >
-      <h3 />
-      <h4>
-        Meaning:
-      </h4>
-      <p />
-      <h4>
-        Description:
-      </h4>
-      <p />
+      <div
+        className="card-details"
+      >
+        <h3 />
+        <h4>
+          Meaning:
+        </h4>
+        <p />
+        <h4>
+          Description:
+        </h4>
+        <p />
+      </div>
     </div>
+    <img
+      alt="Tarot card"
+      className="flip-card-front"
+      src="/cardAssets/GCT-gold.png"
+    />
   </div>
 </article>
 `;

@@ -8,6 +8,7 @@ import Loader from '../../components/Loader/Loader';
 import { Link } from 'react-router-dom';
 import save from '../../images/save.png';
 import saved from '../../images/saved.png';
+import PropTypes from 'prop-types';
 
 export class CardContainer extends Component {
   constructor() {
@@ -62,11 +63,11 @@ export class CardContainer extends Component {
     this.props.removeCards(this.props.cards);
   }
 
-  addFlipId = () => {
-    setTimeout(() => {
-      this.setState({flipped: 'on-flip'})
-    }, 1300)
-  }
+  // addFlipId = () => {
+  //   setTimeout(() => {
+  //     this.setState({flipped: 'on-flip'})
+  //   }, 1300)
+  // }
 
   render() {
 
@@ -75,8 +76,7 @@ export class CardContainer extends Component {
       <section className='card-container fade-in'>
         <section className='cards'>
           {this.props.cards.map(card => {
-            this.addFlipId()
-            return <Card key={card.name_short} card={card} id={this.state.flipped}/>
+            return <Card key={card.name_short} card={card} id={this.props.flipped}/>
           })}
         </section>
         <section className='reading-details'>
@@ -109,4 +109,18 @@ export const mapDispatchToProps = dispatch => ({
   resetQuestionInStore: question => (dispatch(removeQuestion(question)))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(CardContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(CardContainer);
+
+CardContainer.propTypes = {
+  cards: PropTypes.array,
+  question: PropTypes.string,
+  fortune: PropTypes.string,
+  currentReading: PropTypes.object,
+  addCardsToStore: PropTypes.func,
+  addFortuneToStore: PropTypes.func,
+  addReadingToStore: PropTypes.func,
+  removeCards: PropTypes.func,
+  addReadingToFavorites: PropTypes.func,
+  removeReadingFromFavorites: PropTypes.func,
+  resetQuestionInStore: PropTypes.func
+}

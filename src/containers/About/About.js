@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './About.scss';
 import { removeQuestion } from '../../actions';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 export const About = (props) => {
   return (
@@ -23,3 +24,7 @@ export const mapDispatchToProps = dispatch => ({
 })
 
 export default connect(null, mapDispatchToProps)(About);
+
+About.propTypes = {
+  resetQuestion: PropTypes.func
+}

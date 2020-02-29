@@ -17,12 +17,18 @@ import crystal from '../../images/crystal.png';
 export class App extends Component {
   constructor() {
     super();
-    this.state={flipped: ''}
+    this.state={cardContainerFlip: '', deckFlip: ''}
   }
 
-  addFlipId = () => {
+  addCardContainerFlipId = () => {
     setTimeout(() => {
-      this.setState({flipped: 'on-flip'})
+      this.setState({cardContainerFlip: 'on-flip'})
+    }, 3000)
+  }
+
+  addDeckFlipId = () => {
+    setTimeout(() => {
+      this.setState({deckFlip: 'on-flip'})
     }, 3000)
   }
 
@@ -52,8 +58,9 @@ export class App extends Component {
           <Route exact path='/reading'>
             {!this.props.question ? <Redirect to='/home' /> :
               <>
+                {this.addCardContainerFlipId()}
                 <Nav />
-                <CardContainer />
+                <CardContainer flipped={this.state.cardContainerFlip}/>
               </>
             }
           </Route>
@@ -64,10 +71,10 @@ export class App extends Component {
             </>
           </Route>
           <Route exact path='/deck'>
-            {this.addFlipId()}
+            {this.addDeckFlipId()}
             <>
               <Nav />
-              <Deck flipped={this.state.flipped}/>
+              <Deck flipped={this.state.deckFlip}/>
             </>
           </Route>
           <Route exact path='/about'>
@@ -79,7 +86,7 @@ export class App extends Component {
           <Route exact path='/saved/:id'>
             <>
               <Nav />
-              <FavoriteContainer flipped={this.state.flipped}/>
+              <FavoriteContainer />
             </>
           </Route>
           </>
