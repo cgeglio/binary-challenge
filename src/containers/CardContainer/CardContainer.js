@@ -122,5 +122,6 @@ CardContainer.propTypes = {
   removeCards: PropTypes.func,
   addReadingToFavorites: PropTypes.func,
   removeReadingFromFavorites: PropTypes.func,
-  resetQuestionInStore: PropTypes.func
+  resetQuestionInStore: PropTypes.func,
+  flipped: PropTypes.string
 }
