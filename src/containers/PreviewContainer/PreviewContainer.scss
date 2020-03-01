@@ -3,6 +3,8 @@
 
 .preview-container {
   @include flex();
+  background-color: black;
+  height: auto;
 }
 
 .saved-title {

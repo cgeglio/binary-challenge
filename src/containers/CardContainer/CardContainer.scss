@@ -3,6 +3,8 @@
 
 .card-container {
   @include flex();
+  background-color: black;
+  height: auto;
 }
 
 .question {
