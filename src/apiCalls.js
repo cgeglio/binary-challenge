@@ -1,6 +1,6 @@
-export const getCards = () => {
+export const getCards = (spreadNumber) => {
   let proxyUrl = 'https://cors-anywhere.herokuapp.com/',
-      targetUrl = 'https://rws-cards-api.herokuapp.com/api/v1/cards/random?n=4'
+      targetUrl = `https://rws-cards-api.herokuapp.com/api/v1/cards/random?n=${spreadNumber}`
   return fetch(proxyUrl + targetUrl)
     .then(response => {
       if (!response.ok) {
