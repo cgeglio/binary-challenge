@@ -31,6 +31,16 @@ describe('actions', () => {
     expect(result).toEqual(expectedAction)
   })
 
+  it('should have a type REMOVE_CARDS', () => {
+    const cards = [{name: 'The Magician', value: 11}]
+    const expectedAction = {
+      type: 'REMOVE_CARDS',
+      cards
+    }
+    const result = actions.removeCards(cards)
+    expect(result).toEqual(expectedAction)
+  })
+
   it('should have a type ADD_QUESTION', () => {
     const question = 'Is bithcuits a good kitty?'
     const expectedAction = {
@@ -61,6 +71,16 @@ describe('actions', () => {
     expect(result).toEqual(expectedAction)
   })
 
+  it('should have a type REMOVE_FORTUNE', () => {
+    const fortune = 'This too shall pass.'
+    const expectedAction = {
+      type: 'REMOVE_FORTUNE',
+      fortune
+    }
+    const result = actions.removeFortune(fortune)
+    expect(result).toEqual(expectedAction)
+  })
+
   it('should have a type ADD_READING', () => {
     const currentReading = {cards: [{name: 'The Magician'}], question: 'Is bithcuits a good kitty?', fortune: 'This too shall pass.', id: 44}
     const expectedAction = {
@@ -68,6 +88,16 @@ describe('actions', () => {
       currentReading
     }
     const result = actions.addReading(currentReading)
+    expect(result).toEqual(expectedAction)
+  })
+
+  it('should have a type REMOVE_READING', () => {
+    const currentReading = {cards: [{name: 'The Magician'}], question: 'Is bithcuits a good kitty?', fortune: 'This too shall pass.', id: 44}
+    const expectedAction = {
+      type: 'REMOVE_READING',
+      currentReading
+    }
+    const result = actions.removeReading(currentReading)
     expect(result).toEqual(expectedAction)
   })
 
@@ -88,6 +118,16 @@ describe('actions', () => {
       favorite
     }
     const result = actions.removeFavorite(favorite)
+    expect(result).toEqual(expectedAction)
+  })
+
+  it('should have a type RESET_FAVORITE', () => {
+    const favorites = [{cards: [{name: 'The Magician'}], question: 'Is bithcuits a good kitty?', fortune: 'This too shall pass.', id: 44}]
+    const expectedAction = {
+      type: 'RESET_FAVORITES',
+      favorites
+    }
+    const result = actions.resetFavorites(favorites)
     expect(result).toEqual(expectedAction)
   })
 })
