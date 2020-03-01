@@ -5,18 +5,36 @@ import { shallow } from 'enzyme';
 
 describe('PreviewContainer', () => {
 
+  let mockResetQuestion;
+  let mockFavorites;
+
+  beforeEach(() => {
+    mockResetQuestion = jest.fn().mockImplementation();
+    mockFavorites = [{cards: {name: 'The Magician'}, id: 20}];
+  });
+
   describe('PreviewContainer container/component', () => {
     it ('should match the snapshot', () => {
-      const mockFavorites = [{cards: {name: 'The Magician'}, id: 20}]
       const wrapper = shallow(<PreviewContainer favorites={mockFavorites} />);
       expect(wrapper).toMatchSnapshot();
+    });
+
+    it ('should match the snapshot', () => {
+      const wrapper = shallow(<PreviewContainer favorites={mockFavorites} />);
+      expect(wrapper).toMatchSnapshot();
+    });
+
+    it('should call resetQuestion when the home button is clicked', () => {
+      const mockQuestion = 'Is the sky blue?'
+      const wrapper = shallow(<PreviewContainer favorites={mockFavorites} resetQuestion={mockResetQuestion} question={mockQuestion}/>);
+      wrapper.find('.back-btn').simulate('click');
+      expect(mockResetQuestion).toHaveBeenCalledWith(mockQuestion);
     });
   });
 
   describe('mapStateToProps', () => {
     it('should return an array of favorites and a question', () => {
       const mockDispatch = jest.fn();
-      const mockFavorites = [{cards: [{name: 'The Magician'}], id: 20}];
       const wrapper = shallow(<PreviewContainer favorites={mockFavorites} />);
       const mockState = {
         user: {user: {name: 'Bithcuits', id: 9} },

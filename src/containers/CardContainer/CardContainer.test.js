@@ -136,7 +136,7 @@ describe('CardContainer', () => {
       expect(wrapper.instance().determineIcon()).toEqual(saved);
     })
 
-    it('should be call resetQuestionInStore and removeCards when resetInfo is called', () => {
+    it('should call resetQuestionInStore and removeCards when resetInfo is called', () => {
       wrapper.instance().resetInfo()
       expect(mockRemoveQuestion).toHaveBeenCalledWith(mockQuestion);
       expect(mockRemoveCards).toHaveBeenCalledWith(mockCards);

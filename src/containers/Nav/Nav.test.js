@@ -1,6 +1,6 @@
 import React from 'react';
 import { Nav, mapStateToProps, mapDispatchToProps } from './Nav';
-import { logout } from '../../actions';
+import { logout, resetFavorites, removeCards, removeReading, removeFortune, removeQuestion } from '../../actions';
 import { shallow } from 'enzyme';
 
 describe('Nav', () => {
@@ -90,6 +90,46 @@ describe('Nav', () => {
       const actionToDispatch = logout(mockUser);
       const mappedProps = mapDispatchToProps(mockDispatch);
       mappedProps.logoutUser(mockUser);
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    })
+
+    it('should call dispatch with the remove question action when the logout button is clicked', () => {
+      const mockDispatch = jest.fn();
+      const actionToDispatch = removeQuestion(mockQuestion);
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      mappedProps.removeQuestion(mockQuestion);
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    })
+
+    it('should call dispatch with the remove fortune action when the logout button is clicked', () => {
+      const mockDispatch = jest.fn();
+      const actionToDispatch = removeFortune(mockFortune);
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      mappedProps.removeFortune(mockFortune);
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    })
+
+    it('should call dispatch with the remove cards action when the logout button is clicked', () => {
+      const mockDispatch = jest.fn();
+      const actionToDispatch = removeCards(mockCards);
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      mappedProps.removeCards(mockCards);
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    })
+
+    it('should call dispatch with the remove reading action when the logout button is clicked', () => {
+      const mockDispatch = jest.fn();
+      const actionToDispatch = removeReading(mockReading);
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      mappedProps.removeReading(mockReading);
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    })
+
+    it('should call dispatch with the reset favorites action when the logout button is clicked', () => {
+      const mockDispatch = jest.fn();
+      const actionToDispatch = resetFavorites(mockFavorites);
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      mappedProps.resetFavorites(mockFavorites);
       expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
     })
   });
