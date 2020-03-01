@@ -10,12 +10,12 @@ exports[`CardContainer CardContainer container/component should match the snapsh
     <Card
       card={
         Object {
-          "name": "The Magician",
-          "value": 8,
+          "name": "The Moon",
+          "value": 6,
         }
       }
-      id="on-flip"
       key="NaN"
+      number={1}
     />
   </section>
   <section

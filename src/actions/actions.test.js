@@ -21,26 +21,6 @@ describe('actions', () => {
     expect(result).toEqual(expectedAction)
   })
 
-  it('should have a type ADD_CARDS', () => {
-    const cards = [{name: 'The Magician', value: 11}]
-    const expectedAction = {
-      type: 'ADD_CARDS',
-      cards
-    }
-    const result = actions.addCards(cards)
-    expect(result).toEqual(expectedAction)
-  })
-
-  it('should have a type REMOVE_CARDS', () => {
-    const cards = [{name: 'The Magician', value: 11}]
-    const expectedAction = {
-      type: 'REMOVE_CARDS',
-      cards
-    }
-    const result = actions.removeCards(cards)
-    expect(result).toEqual(expectedAction)
-  })
-
   it('should have a type ADD_QUESTION', () => {
     const question = 'Is bithcuits a good kitty?'
     const expectedAction = {
@@ -58,26 +38,6 @@ describe('actions', () => {
       question
     }
     const result = actions.removeQuestion(question)
-    expect(result).toEqual(expectedAction)
-  })
-
-  it('should have a type ADD_FORTUNE', () => {
-    const fortune = 'This too shall pass.'
-    const expectedAction = {
-      type: 'ADD_FORTUNE',
-      fortune
-    }
-    const result = actions.addFortune(fortune)
-    expect(result).toEqual(expectedAction)
-  })
-
-  it('should have a type REMOVE_FORTUNE', () => {
-    const fortune = 'This too shall pass.'
-    const expectedAction = {
-      type: 'REMOVE_FORTUNE',
-      fortune
-    }
-    const result = actions.removeFortune(fortune)
     expect(result).toEqual(expectedAction)
   })
 
@@ -128,6 +88,16 @@ describe('actions', () => {
       favorites
     }
     const result = actions.resetFavorites(favorites)
+    expect(result).toEqual(expectedAction)
+  })
+
+  it('should have a type ADD_SPREAD', () => {
+    const spreadNumber = 3;
+    const expectedAction = {
+      type: 'ADD_SPREAD',
+      spreadNumber
+    }
+    const result = actions.addSpread(spreadNumber)
     expect(result).toEqual(expectedAction)
   })
 })

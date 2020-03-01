@@ -18,7 +18,31 @@ exports[`ReadingStarter ReadingStarter container/component should match the snap
     <form
       className="question-form"
     >
+      <select
+        name="spread"
+        onChange={[Function]}
+      >
+        <option>
+          Select reading...
+        </option>
+        <option
+          value={4}
+        >
+          4 Card Reading
+        </option>
+        <option
+          value={3}
+        >
+          3 Card Reading
+        </option>
+        <option
+          value={1}
+        >
+          1 Card Reading
+        </option>
+      </select>
       <input
+        maxLength={55}
         name="question"
         onChange={[Function]}
         placeholder="Enter a question..."
