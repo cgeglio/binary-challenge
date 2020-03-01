@@ -5,6 +5,7 @@ import { question } from './questionReducer';
 import { fortune } from './fortuneReducer';
 import { currentReading } from './readingReducer';
 import { favorites } from './favoritesReducer';
+import { spreadNumber } from './spreadReducer';
 
 export const rootReducer = combineReducers({
   user,
@@ -12,5 +13,6 @@ export const rootReducer = combineReducers({
   question,
   fortune,
   currentReading,
-  favorites
+  favorites,
+  spreadNumber
 });
