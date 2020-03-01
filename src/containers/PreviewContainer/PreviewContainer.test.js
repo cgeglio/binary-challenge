@@ -15,7 +15,7 @@ describe('PreviewContainer', () => {
   describe('mapStateToProps', () => {
     it('should return an array of favorites', () => {
       const mockDispatch = jest.fn();
-      const mockFavorites = {cards: [{name: 'The Magician'}], id: 20};
+      const mockFavorites = [{cards: [{name: 'The Magician'}], id: 20}];
       const wrapper = shallow(<PreviewContainer favorites={mockFavorites} />);
       const mockState = {
         user: {user: {name: 'Bithcuits', id: 9} },

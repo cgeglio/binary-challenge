@@ -70,7 +70,7 @@ export class CardContainer extends Component {
       <section className='card-container fade-in'>
         <section className='cards'>
           {this.props.cards.map(card => {
-            return <Card key={card.name_short} card={card} id='on-flip'/>
+            return <Card key={card.name_short + card.value} card={card} id='on-flip'/>
           })}
         </section>
         <section className='reading-details'>

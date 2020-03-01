@@ -8,10 +8,18 @@ describe('Nav', () => {
   let wrapper;
   let mockUser;
   let mockFavorites;
+  let mockCards;
+  let mockQuestion;
+  let mockFortune;
+  let mockReading
 
   beforeEach(() => {
     mockUser = {name: 'Bithcuits', id: 50}
     mockFavorites = [{cards: [{name: 'The Magician', id: 28}]}];
+    mockCards = [{name: 'The Moon'}];
+    mockQuestion = 'Is the sky blue?';
+    mockFortune = 'Two wrongs don\'t make a right'
+    mockReading = {cards: [{name: 'The Magician', id: 28}], id: 30}
     wrapper = shallow(<Nav user={mockUser} favorites={mockFavorites} />);
   });
 
@@ -20,25 +28,56 @@ describe('Nav', () => {
       expect(wrapper).toMatchSnapshot();
     });
 
-    it ('should call logoutUser when the logout button is clicked', () => {
+    it ('should call logoutUser, resetFavorites, removeCards, removeQuestion, removeFortune, removeReading when the logout button is clicked', () => {
       let mockLogout = jest.fn().mockImplementation();
-      wrapper = shallow(<Nav user={mockUser} favorites={mockFavorites} logoutUser={mockLogout}/>);
+      let mockResetFavorites = jest.fn().mockImplementation();
+      let mockRemoveCards = jest.fn().mockImplementation();
+      let mockRemoveQuestion = jest.fn().mockImplementation();
+      let mockRemoveFortune = jest.fn().mockImplementation();
+      let mockRemoveReading = jest.fn().mockImplementation();
+      wrapper = shallow(<Nav
+        user={mockUser}
+        favorites={mockFavorites}
+        cards={mockCards}
+        question={mockQuestion}
+        fortune={mockFortune}
+        currentReading={mockReading}
+        logoutUser={mockLogout}
+        resetFavorites={mockResetFavorites}
+        removeCards={mockRemoveCards}
+        removeQuestion={mockRemoveQuestion}
+        removeFortune={mockRemoveFortune}
+        removeReading={mockRemoveReading}
+      />);
       wrapper.find('#logout-btn').simulate('click');
       expect(mockLogout).toHaveBeenCalledWith(mockUser);
+      expect(mockResetFavorites).toHaveBeenCalledWith(mockFavorites);
+      expect(mockRemoveCards).toHaveBeenCalledWith(mockCards);
+      expect(mockRemoveQuestion).toHaveBeenCalledWith(mockQuestion);
+      expect(mockRemoveFortune).toHaveBeenCalledWith(mockFortune);
+      expect(mockRemoveReading).toHaveBeenCalledWith(mockReading);
     });
   });
 
   describe('mapStateToProps', () => {
-    it('should return a user object and an array of favorites', () => {
+    it('should return a user, an array of favorites, a question, a fortune, an array of cards, and a current reading', () => {
       const mockDispatch = jest.fn();
       const mockState = {
-        user: {name: 'Peanut', id: 7},
-        favorites: [{name: 'The Moon', value: 8}],
-        cards: [{name: 'The Sun', value: 4}]
+        user: mockUser,
+        favorites: mockFavorites,
+        question: mockQuestion,
+        fortune: mockFortune,
+        cards: mockCards,
+        currentReading: mockReading,
+        testKey: 'test value'
       }
       const expected = {
-        user: {name: 'Peanut', id: 7},
-        favorites: [{name: 'The Moon', value: 8}]
+        user: mockUser,
+        favorites: mockFavorites,
+        question: mockQuestion,
+        fortune: mockFortune,
+        cards: mockCards,
+        currentReading: mockReading
       };
       const mappedProps = mapStateToProps(mockState);
       expect(mappedProps).toEqual(expected);

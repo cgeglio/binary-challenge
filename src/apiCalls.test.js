@@ -48,7 +48,7 @@ describe('getFortune', () => {
   });
 
   it('should call fetch with the correct url', () => {
-    let expected = 'http://fortunecookieapi.herokuapp.com/v1/fortunes/'
+    let expected = 'https://fortunecookieapi.herokuapp.com/v1/fortunes/'
     getFortune();
     expect(window.fetch).toHaveBeenCalledWith(expected)
   });
