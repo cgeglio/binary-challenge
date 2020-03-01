@@ -22,7 +22,7 @@ export class ReadingStarter extends Component {
   }
 
   startReading = () => {
-    this.props.removeReading(this.props.currentReading)
+    this.props.removeReading(this.props.currentReading);
     this.props.updateSpreadNumber(this.state.spread);
     this.props.updateQuestion(this.state.question);
     this.setState({question: '', error: null});
