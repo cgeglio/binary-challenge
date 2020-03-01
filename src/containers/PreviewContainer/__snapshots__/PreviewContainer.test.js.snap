@@ -2,7 +2,7 @@
 
 exports[`PreviewContainer PreviewContainer container/component should match the snapshot 1`] = `
 <section
-  className="preview-container"
+  className="preview-container fade-in"
 >
   <h2
     className="saved-title"

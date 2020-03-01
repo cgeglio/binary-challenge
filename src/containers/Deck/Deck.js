@@ -27,7 +27,7 @@ class Deck extends Component {
         <h2 className='deck-title'>The Tarot Deck</h2>
         <div className='btn-container'><Link to='/home'><button onClick={() => this.props.resetQuestion('question')} className='back-btn'>Home</button></Link></div>
         {this.state.deck.map(card => {
-          return <Card key={card.name_short} card={card} id={this.props.flipped}/>
+          return <Card key={card.name_short} card={card} id='on-flip'/>
         })}
       </section>
     )

@@ -13,7 +13,7 @@ import PropTypes from 'prop-types';
 export class CardContainer extends Component {
   constructor() {
     super();
-    this.state={icon: save, flipped: ''}
+    this.state={icon: save}
   }
 
   componentDidMount() {
@@ -63,12 +63,6 @@ export class CardContainer extends Component {
     this.props.removeCards(this.props.cards);
   }
 
-  // addFlipId = () => {
-  //   setTimeout(() => {
-  //     this.setState({flipped: 'on-flip'})
-  //   }, 1300)
-  // }
-
   render() {
 
     return (
@@ -76,7 +70,7 @@ export class CardContainer extends Component {
       <section className='card-container fade-in'>
         <section className='cards'>
           {this.props.cards.map(card => {
-            return <Card key={card.name_short} card={card} id={this.props.flipped}/>
+            return <Card key={card.name_short} card={card} id='on-flip'/>
           })}
         </section>
         <section className='reading-details'>

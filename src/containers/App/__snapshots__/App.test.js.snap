@@ -23,7 +23,9 @@ exports[`App should match the snapshot 1`] = `
     path="/reading"
   >
     <Connect(Nav) />
-    <Connect(CardContainer) />
+    <Connect(CardContainer)
+      flipped=""
+    />
   </Route>
   <Route
     exact={true}
@@ -53,9 +55,7 @@ exports[`App should match the snapshot 1`] = `
     path="/saved/:id"
   >
     <Connect(Nav) />
-    <Connect(FavoriteContainer)
-      flipped=""
-    />
+    <Connect(FavoriteContainer) />
   </Route>
 </main>
 `;

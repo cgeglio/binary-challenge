@@ -12,7 +12,7 @@ import PropTypes from 'prop-types';
 export class FavoriteContainer extends Component {
   constructor() {
     super();
-    this.state={icon: save, flipped: ''}
+    this.state={icon: save}
   }
 
   updateSavedStatus = () => {
@@ -35,12 +35,6 @@ export class FavoriteContainer extends Component {
     return this.props.currentReading.saved ? saved : save;
   }
 
-  addFlipId = () => {
-    setTimeout(() => {
-      this.setState({flipped: 'on-flip'})
-    }, 1300)
-  }
-
   render() {
 
     return (
@@ -48,8 +42,7 @@ export class FavoriteContainer extends Component {
       <section className='favorite-container fade-in'>
         <section className='cards'>
           {this.props.currentReading.cards.map(card => {
-            this.addFlipId()
-            return <Card key={card.name_short} card={card} id={this.state.flipped}/>
+            return <Card key={card.name_short} card={card} id='on-flip'/>
           })}
         </section>
         <section className='reading-details'>
