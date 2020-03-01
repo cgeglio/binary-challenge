@@ -62,3 +62,8 @@ export const resetFavorites = favorites => ({
   type: 'RESET_FAVORITES',
   favorites
 })
+
+export const addSpread = spreadNumber => ({
+  type: 'ADD_SPREAD',
+  spreadNumber
+})

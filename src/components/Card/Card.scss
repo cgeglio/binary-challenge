@@ -81,16 +81,14 @@ p {
 }
 
 .flip-card-inner {
+  animation: change 2s ease forwards;
+  animation-delay: 1s;
   position: relative;
   width: 100%;
   height: 100%;
   text-align: center;
   transition: transform 0.8s;
   transform-style: preserve-3d;
-}
-
-#on-flip {
-  animation: change 3s ease forwards;
 }
 
 .flip-card-front, .flip-card-back {

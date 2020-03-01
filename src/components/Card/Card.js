@@ -2,7 +2,7 @@ import React from 'react';
 import './Card.scss';
 import PropTypes from 'prop-types';
 
-const Card = ({ card, id}) => {
+const Card = ({ card, id, number}) => {
   return (
     <article className='flip-card fade-in'>
       <div className='flip-card-inner' id={id}>
@@ -16,7 +16,7 @@ const Card = ({ card, id}) => {
           <p>{card.desc}</p>
         </div>
       </div>
-      <img src={process.env.PUBLIC_URL + `/cardAssets/GCT-gold.png`} alt="Tarot card" className='flip-card-front' />
+      <img src={process.env.PUBLIC_URL + `/cardAssets/card${number}.png`} alt="Tarot card" className='flip-card-front' />
       </div>
     </article>
   )

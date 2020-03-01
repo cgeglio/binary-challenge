@@ -28,7 +28,7 @@
 .question-form {
   @include flex();
   justify-content: center;
-  margin-top: 160px;
+  margin-top: 130px;
   position: absolute;
 }
 
@@ -48,4 +48,11 @@
 
 .question-form .error-message {
   margin-top: 155px;
+}
+
+select {
+  @include input();
+  font-size: .9em;
+  height: 35px;
+  width: 200px;
 }
