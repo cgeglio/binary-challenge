@@ -8,16 +8,6 @@ export const logout = user => ({
   user
 })
 
-export const addCards = cards => ({
-  type: 'ADD_CARDS',
-  cards
-})
-
-export const removeCards = cards => ({
-  type: 'REMOVE_CARDS',
-  cards
-})
-
 export const addQuestion = question => ({
   type: 'ADD_QUESTION',
   question
@@ -26,16 +16,6 @@ export const addQuestion = question => ({
 export const removeQuestion = question => ({
   type: 'REMOVE_QUESTION',
   question
-})
-
-export const addFortune = fortune => ({
-  type: 'ADD_FORTUNE',
-  fortune
-})
-
-export const removeFortune = fortune => ({
-  type: 'REMOVE_FORTUNE',
-  fortune
 })
 
 export const addReading = currentReading => ({
