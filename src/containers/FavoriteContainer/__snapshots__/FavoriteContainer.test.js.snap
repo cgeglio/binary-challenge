@@ -15,7 +15,6 @@ exports[`FavoriteContainer FavoriteContainer container/component should match th
         }
       }
       id=""
-      key="NaN"
     />
   </section>
   <section

@@ -5,16 +5,20 @@ exports[`ReadingPreview ReadingPreview container/component should match the snap
   className="saved-preview"
 >
   <div
+    className="preview-overlay"
+  />
+  <div
     className="preview-cards"
   >
     <div
-      className="preview-overlay"
-    />
-    <img
-      alt="Tarot card"
       key="The Moon"
-      src="/cardAssets/undefined.jpg"
-    />
+    >
+      <img
+        alt="Tarot card"
+        key="The Moon"
+        src="/cardAssets/undefined.jpg"
+      />
+    </div>
   </div>
   <h2
     className="preview-question"

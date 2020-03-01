@@ -2,7 +2,7 @@
 
 exports[`ReadingStarter ReadingStarter container/component should match the snapshot 1`] = `
 <section
-  className="home-page"
+  className="home-page fade-in"
 >
   <img
     alt="The Future Is Golden"
