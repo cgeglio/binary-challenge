@@ -14,7 +14,7 @@ export const About = (props) => {
       <p>620 Treat Avenue</p>
       <p>San Francisco, CA 94110</p>
       <p>Phone: (415) 555-5555</p>
-      <Link to='/home'><button onClick={() => props.resetQuestion('question')}className='back-btn'>Home</button></Link>
+      <Link to='/home'><button onClick={() => props.resetQuestion('question')} className='back-btn'>Home</button></Link>
     </section>
   )
 }
