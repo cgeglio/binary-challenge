@@ -42,7 +42,8 @@ export class FavoriteContainer extends Component {
       <section className='favorite-container fade-in'>
         <section className='cards'>
           {this.props.currentReading.cards.map(card => {
-            return <Card key={card.name_short + card.name} card={card} id='on-flip'/>
+            let number = this.props.currentReading.cards.indexOf(card) + 1;
+            return <Card key={card.name_short + card.name} card={card} number={number}/>
           })}
         </section>
         <section className='reading-details'>

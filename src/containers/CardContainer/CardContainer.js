@@ -17,7 +17,7 @@ export class CardContainer extends Component {
   }
 
   componentDidMount() {
-    getCards()
+    getCards(this.props.spreadNumber)
       .then(cards => this.props.addCardsToStore(cards.cards))
       .then(() => this.fetchFortune())
       .catch(error => console.log(error))
@@ -28,7 +28,6 @@ export class CardContainer extends Component {
     getFortune()
       .then(fortunes => this.props.addFortuneToStore(fortunes[fortuneIndex].message))
       .then(() => this.addCurrentReading())
-      .then(() => this.addFlipId())
       .catch(error => console.log(error))
   }
 
@@ -70,7 +69,8 @@ export class CardContainer extends Component {
       <section className='card-container fade-in'>
         <section className='cards'>
           {this.props.cards.map(card => {
-            return <Card key={card.name_short + card.value} card={card} id='on-flip'/>
+            let number = this.props.cards.indexOf(card) + 1;
+            return <Card key={card.name_short + card.value} card={card} number={number}/>
           })}
         </section>
         <section className='reading-details'>
@@ -90,7 +90,8 @@ export const mapStateToProps = state => ({
   cards: state.cards,
   question: state.question,
   fortune: state.fortune,
-  currentReading: state.currentReading
+  currentReading: state.currentReading,
+  spreadNumber: state.spreadNumber
 })
 
 export const mapDispatchToProps = dispatch => ({
