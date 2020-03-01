@@ -18,7 +18,7 @@ describe('getCards', () => {
   it('should call fetch with the correct url', () => {
     let proxyUrl = 'https://cors-anywhere.herokuapp.com/',
         targetUrl = 'https://rws-cards-api.herokuapp.com/api/v1/cards/random?n=4'
-    getCards();
+    getCards(4);
     expect(window.fetch).toHaveBeenCalledWith(proxyUrl + targetUrl)
   });
 
