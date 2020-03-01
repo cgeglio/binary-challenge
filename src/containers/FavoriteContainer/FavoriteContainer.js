@@ -38,7 +38,7 @@ export class FavoriteContainer extends Component {
   render() {
 
     return (
-      !this.props.fortune ? <Loader /> :
+      !this.props.currentReading.fortune ? <Loader /> :
       <section className='favorite-container fade-in'>
         <section className='cards'>
           {this.props.currentReading.cards.map(card => {
@@ -60,7 +60,6 @@ export class FavoriteContainer extends Component {
 }
 
 export const mapStateToProps = state => ({
-  fortune: state.fortune,
   currentReading: state.currentReading
 })
 
@@ -73,7 +72,6 @@ export default connect(mapStateToProps, mapDispatchToProps)(FavoriteContainer);
 
 FavoriteContainer.propTypes = {
   currentReading: PropTypes.object,
-  fortune: PropTypes.string,
   addReadingToFavorites: PropTypes.func,
   removeReadingFromFavorites: PropTypes.func
 }

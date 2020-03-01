@@ -26,5 +26,6 @@ export default Card;
 
 Card.propTypes = {
   card: PropTypes.object,
-  id: PropTypes.string
+  id: PropTypes.string,
+  number: PropTypes.number
 }

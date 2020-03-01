@@ -80,9 +80,7 @@ export class App extends Component {
 
 export const mapStateToProps = state => ({
   user: state.user,
-  cards: state.cards,
-  question: state.question,
-  currentReading: state.currentReading
+  question: state.question
 })
 
 export default connect(mapStateToProps)(App);

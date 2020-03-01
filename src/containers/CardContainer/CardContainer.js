@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './CardContainer.scss';
 import { connect } from 'react-redux';
 import { getCards, getFortune } from '../../apiCalls';
-import { addFavorite, removeFavorite, addCards, addFortune, addReading, removeCards, removeQuestion } from '../../actions';
+import { addFavorite, removeFavorite, addReading, removeQuestion } from '../../actions';
 import Card from '../../components/Card/Card';
 import Loader from '../../components/Loader/Loader';
 import { Link } from 'react-router-dom';
@@ -13,12 +13,12 @@ import PropTypes from 'prop-types';
 export class CardContainer extends Component {
   constructor() {
     super();
-    this.state={icon: save}
+    this.state={icon: save, cards: []}
   }
 
   componentDidMount() {
     getCards(this.props.spreadNumber)
-      .then(cards => this.props.addCardsToStore(cards.cards))
+      .then(cards => this.setState(({cards: cards.cards})))
       .then(() => this.fetchFortune())
       .catch(error => console.log(error))
   }
@@ -26,14 +26,13 @@ export class CardContainer extends Component {
   fetchFortune = () => {
     let fortuneIndex = Math.floor(Math.random() * 100);
     getFortune()
-      .then(fortunes => this.props.addFortuneToStore(fortunes[fortuneIndex].message))
-      .then(() => this.addCurrentReading())
+      .then(fortunes => this.addCurrentReading(fortunes[fortuneIndex].message))
       .catch(error => console.log(error))
   }
 
-  addCurrentReading = () => {
+  addCurrentReading = (fortune) => {
     let id = Date.now();
-    let currentReading = {cards: this.props.cards, fortune: this.props.fortune, question: this.props.question, id: id, saved: false};
+    let currentReading = {cards: this.state.cards, fortune: fortune, question: this.props.question, id: id, saved: false};
     this.props.addReadingToStore(currentReading);
   }
 
@@ -59,17 +58,16 @@ export class CardContainer extends Component {
 
   resetInfo = () => {
     this.props.resetQuestionInStore(this.props.question);
-    this.props.removeCards(this.props.cards);
   }
 
   render() {
 
     return (
-      !this.props.fortune ? <Loader /> :
+      !this.props.currentReading.fortune ? <Loader /> :
       <section className='card-container fade-in'>
         <section className='cards'>
-          {this.props.cards.map(card => {
-            let number = this.props.cards.indexOf(card) + 1;
+          {this.props.currentReading.cards.map(card => {
+            let number = this.props.currentReading.cards.indexOf(card) + 1;
             return <Card key={card.name_short + card.value} card={card} number={number}/>
           })}
         </section>
@@ -77,7 +75,7 @@ export class CardContainer extends Component {
           <button onClick={() => this.updateSavedStatus()} className="save-btn"><img src={this.determineIcon()} alt="save reading icon" className="save-icon"/></button>
           <div>
             <h2 className='question'>{this.props.currentReading.question}</h2>
-            <h2>{this.props.fortune}</h2>
+            <h2>{this.props.currentReading.fortune}</h2>
           </div>
         </section>
         <Link to='/home'><button onClick={() => this.resetInfo()} id='ask-another' className='back-btn'>Ask Another Question</button></Link>
@@ -87,18 +85,13 @@ export class CardContainer extends Component {
 }
 
 export const mapStateToProps = state => ({
-  cards: state.cards,
   question: state.question,
-  fortune: state.fortune,
   currentReading: state.currentReading,
   spreadNumber: state.spreadNumber
 })
 
 export const mapDispatchToProps = dispatch => ({
-  addCardsToStore: cards => (dispatch(addCards(cards))),
-  addFortuneToStore: fortune => (dispatch(addFortune(fortune))),
   addReadingToStore: currentReading => (dispatch(addReading(currentReading))),
-  removeCards: cards => (dispatch(removeCards(cards))),
   addReadingToFavorites: favorite => (dispatch(addFavorite(favorite))),
   removeReadingFromFavorites: favorite => (dispatch(removeFavorite(favorite))),
   resetQuestionInStore: question => (dispatch(removeQuestion(question)))
@@ -107,14 +100,10 @@ export const mapDispatchToProps = dispatch => ({
 export default connect(mapStateToProps, mapDispatchToProps)(CardContainer);
 
 CardContainer.propTypes = {
-  cards: PropTypes.array,
   question: PropTypes.string,
-  fortune: PropTypes.string,
   currentReading: PropTypes.object,
-  addCardsToStore: PropTypes.func,
-  addFortuneToStore: PropTypes.func,
+  spreadNumber: PropTypes.string,
   addReadingToStore: PropTypes.func,
-  removeCards: PropTypes.func,
   addReadingToFavorites: PropTypes.func,
   removeReadingFromFavorites: PropTypes.func,
   resetQuestionInStore: PropTypes.func,

@@ -12,7 +12,7 @@ export class ReadingStarter extends Component {
   }
 
   handleChange = event => {
-    this.setState({[event.target.name]: event.target.value})
+    this.setState({[event.target.name]: event.target.value});
   }
 
   verifyQuestionInput = event => {
@@ -22,7 +22,7 @@ export class ReadingStarter extends Component {
   }
 
   startReading = () => {
-    this.props.updateSpreadNumber(this.state.spread)
+    this.props.updateSpreadNumber(this.state.spread);
     this.props.updateQuestion(this.state.question);
     this.setState({question: '', error: null});
   }
@@ -64,12 +64,12 @@ export const mapStateToProps = state => ({
 export const mapDispatchToProps = dispatch => ({
   updateQuestion: question => (dispatch(addQuestion(question))),
   updateSpreadNumber: number => (dispatch(addSpread(number)))
-
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReadingStarter);
 
 ReadingStarter.propTypes = {
   user: PropTypes.object,
-  updateQuestion: PropTypes.func
+  updateQuestion: PropTypes.func,
+  updateSpreadNumber: PropTypes.func
 }
