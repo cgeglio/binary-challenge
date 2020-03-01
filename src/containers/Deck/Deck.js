@@ -8,7 +8,7 @@ import { removeQuestion } from '../../actions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-class Deck extends Component {
+export class Deck extends Component {
   constructor() {
     super();
     this.state={deck: []}
@@ -27,7 +27,7 @@ class Deck extends Component {
         <h2 className='deck-title'>The Tarot Deck</h2>
         <div className='btn-container'><Link to='/home'><button onClick={() => this.props.resetQuestion('question')} className='back-btn'>Home</button></Link></div>
         {this.state.deck.map(card => {
-          return <Card key={card.name_short} card={card} id='on-flip'/>
+          return <Card key={card.name_short+card.name_short} card={card} id='on-flip'/>
         })}
       </section>
     )
