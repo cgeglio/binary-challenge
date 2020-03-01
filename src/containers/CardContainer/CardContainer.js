@@ -117,5 +117,4 @@ CardContainer.propTypes = {
   addReadingToFavorites: PropTypes.func,
   removeReadingFromFavorites: PropTypes.func,
   resetQuestionInStore: PropTypes.func,
-  flipped: PropTypes.string
 }

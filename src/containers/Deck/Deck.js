@@ -41,6 +41,5 @@ export const mapDispatchToProps = dispatch => ({
 export default connect(null, mapDispatchToProps)(Deck);
 
 Deck.propTypes = {
-  resetQuestion: PropTypes.func,
-  flipped: PropTypes.string
+  resetQuestion: PropTypes.func
 }
