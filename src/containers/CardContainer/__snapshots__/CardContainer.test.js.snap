@@ -14,6 +14,8 @@ exports[`CardContainer CardContainer container/component should match the snapsh
           "value": 8,
         }
       }
+      id="on-flip"
+      key="NaN"
     />
   </section>
   <section

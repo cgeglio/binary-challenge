@@ -42,7 +42,7 @@ export class FavoriteContainer extends Component {
       <section className='favorite-container fade-in'>
         <section className='cards'>
           {this.props.currentReading.cards.map(card => {
-            return <Card key={card.name_short} card={card} id='on-flip'/>
+            return <Card key={card.name_short + card.name} card={card} id='on-flip'/>
           })}
         </section>
         <section className='reading-details'>

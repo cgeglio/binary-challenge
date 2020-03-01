@@ -18,4 +18,16 @@ describe('currentReading', () => {
     const result = currentReading(mockState, mockAction);
     expect(result).toEqual(expected)
   })
+
+  it('should return the correct state if the action type is REMOVE_READING', () => {
+    const mockReading = {cards: [{name: 'The Magician'}], question: 'Is bithcuits a good kitty?', fortune: 'This too shall pass.', id: 44};
+    const mockState = {cards: [{name: 'The Moon'}], question: 'Is bithcuits a bad kitty?', fortune: 'Cheaters never prosper', id: 30};
+    const mockAction = {
+      type: 'REMOVE_READING',
+      currentReading: mockReading,
+    }
+    const expected = {};
+    const result = currentReading(mockState, mockAction);
+    expect(result).toEqual(expected)
+  })
 })

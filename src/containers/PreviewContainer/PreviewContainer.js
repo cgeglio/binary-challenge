@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 export class PreviewContainer extends Component {
 
   resetQuestion = () => {
-    this.props.resetQuestionInStore(this.props.question);
+    this.props.resetQuestion(this.props.question);
   }
 
   render() {
@@ -33,7 +33,7 @@ export const mapStateToProps = state => ({
 })
 
 export const mapDispatchToProps = dispatch => ({
-  resetQuestionInStore: question => (dispatch(removeQuestion(question)))
+  resetQuestion: question => (dispatch(removeQuestion(question)))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(PreviewContainer);

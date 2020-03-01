@@ -18,4 +18,16 @@ describe('fortune', () => {
     const result = fortune(mockState, mockAction);
     expect(result).toEqual(expected)
   })
+
+  it('should return the correct state if the action type is REMOVE_FORTUNE', () => {
+    const mockFortune = 'Marry in haste, regret in leisure';
+    const mockState = 'Cheaters never prosper';
+    const mockAction = {
+      type: 'REMOVE_FORTUNE',
+      fortune: mockFortune,
+    }
+    const expected = '';
+    const result = fortune(mockState, mockAction);
+    expect(result).toEqual(expected)
+  })
 })

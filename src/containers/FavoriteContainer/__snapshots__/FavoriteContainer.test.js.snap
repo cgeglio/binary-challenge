@@ -14,7 +14,8 @@ exports[`FavoriteContainer FavoriteContainer container/component should match th
           "value": 6,
         }
       }
-      id=""
+      id="on-flip"
+      key="undefinedThe Moon"
     />
   </section>
   <section

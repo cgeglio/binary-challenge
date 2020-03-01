@@ -16,11 +16,12 @@ describe('CardContainer', () => {
   let mockFortune;
   let mockCurrentReading;
   let mockAddCards;
+  let mockAddReading;
+  let mockRemoveCards;
   let mockAddFortune;
   let mockAddFavorite;
   let mockRemoveFavorite;
-  let mockAddReading;
-  let mockRemoveReading;
+  let mockRemoveQuestion;
 
   beforeEach(() => {
     mockCards = [{name: 'The Magician', value: 8}];
@@ -34,10 +35,11 @@ describe('CardContainer', () => {
 
     mockAddCards = jest.fn().mockImplementation();
     mockAddFortune = jest.fn().mockImplementation();
+    mockAddReading = jest.fn().mockImplementation();
+    mockRemoveCards = jest.fn().mockImplementation();
     mockAddFavorite = jest.fn().mockImplementation();
     mockRemoveFavorite = jest.fn().mockImplementation();
-    mockAddReading = jest.fn().mockImplementation();
-    mockRemoveReading = jest.fn().mockImplementation();
+    mockRemoveQuestion = jest.fn().mockImplementation();
 
     getCards.mockImplementation(() => {
       return Promise.resolve({cards:[
@@ -58,8 +60,10 @@ describe('CardContainer', () => {
        addCardsToStore={mockAddCards}
        addFortuneToStore={mockAddFortune}
        addReadingToStore={mockAddReading}
+       removeCards={mockRemoveCards}
        addReadingToFavorites={mockAddFavorite}
        removeReadingFromFavorites={mockRemoveFavorite}
+       resetQuestionInStore={mockRemoveQuestion}
     />);
   });
 
@@ -128,9 +132,14 @@ describe('CardContainer', () => {
 
     it('should be able to determine which icon to display', () => {
       expect(wrapper.instance().determineIcon()).toEqual(save);
-
       mockCurrentReading.saved = true;
       expect(wrapper.instance().determineIcon()).toEqual(saved);
+    })
+
+    it('should call resetQuestionInStore and removeCards when resetInfo is called', () => {
+      wrapper.instance().resetInfo()
+      expect(mockRemoveQuestion).toHaveBeenCalledWith(mockQuestion);
+      expect(mockRemoveCards).toHaveBeenCalledWith(mockCards);
     })
 
     it('should call updateSavedStatus when the save button is clicked', () => {
