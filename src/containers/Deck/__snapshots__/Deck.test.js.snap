@@ -31,7 +31,7 @@ exports[`Deck Deck container/component should match the snapshot 1`] = `
       }
     }
     key="NaN"
-    number={4}
+    number={2}
   />
   <Card
     card={
@@ -41,7 +41,7 @@ exports[`Deck Deck container/component should match the snapshot 1`] = `
       }
     }
     key="NaN"
-    number={1}
+    number={3}
   />
 </section>
 `;
