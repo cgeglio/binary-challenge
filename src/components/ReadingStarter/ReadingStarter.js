@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './ReadingStarter.scss';
 import { connect } from 'react-redux';
-import { addQuestion, addSpread } from '../../actions';
+import { addQuestion, addSpread, removeReading } from '../../actions';
 import golden from '../../images/golden.png';
 import PropTypes from 'prop-types';
 
@@ -22,6 +22,7 @@ export class ReadingStarter extends Component {
   }
 
   startReading = () => {
+    this.props.removeReading(this.props.currentReading)
     this.props.updateSpreadNumber(this.state.spread);
     this.props.updateQuestion(this.state.question);
     this.setState({question: '', error: null});
@@ -58,12 +59,14 @@ export class ReadingStarter extends Component {
 }
 
 export const mapStateToProps = state => ({
-  user: state.user
+  user: state.user,
+  currentReading: state.currentReading
 })
 
 export const mapDispatchToProps = dispatch => ({
   updateQuestion: question => (dispatch(addQuestion(question))),
-  updateSpreadNumber: number => (dispatch(addSpread(number)))
+  updateSpreadNumber: number => (dispatch(addSpread(number))),
+  removeReading: reading => (dispatch(removeReading(reading))),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReadingStarter);
