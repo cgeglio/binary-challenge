@@ -17,4 +17,8 @@ For my final Mod 3 solo project, I decided to make a tarot application. Once log
 - After viewing your reading, you can click the save button and revisit it by clicking the "saved" button at the top of the page
 - You can view the entire deck by clicking the "deck" button at the top of the page 
 
+### APIs
+- https://rws-cards-api.herokuapp.com/
+- https://fortunecookieapi.herokuapp.com/v1/fortunes/
+
 
