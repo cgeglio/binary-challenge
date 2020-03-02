@@ -22,7 +22,7 @@ describe('ReadingStarter', () => {
       expect(wrapper.state()).toEqual({question: '', spread: 4, error: null});
     });
 
-    it('should set state with a question when handleChange is called', () => {
+    it('should set state with a question or spread when handleChange is called', () => {
       const mockEvent = {
         target: {name: 'question', value: 'Is the sky blue?'},
         preventDefault: jest.fn()

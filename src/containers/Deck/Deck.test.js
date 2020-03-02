@@ -3,6 +3,7 @@ import { Deck, mapDispatchToProps } from './Deck';
 import { removeQuestion } from '../../actions';
 import { shallow } from 'enzyme';
 import { getDeck } from '../../apiCalls';
+import { mockRandom } from 'jest-mock-random';
 
 jest.mock('../../apiCalls');
 
@@ -13,6 +14,7 @@ describe('Deck', () => {
 
   beforeEach(() => {
     mockResetQuestion = jest.fn().mockImplementation();
+    mockRandom([.01]);
 
     getDeck.mockImplementation(() => {
       return Promise.resolve({cards: [

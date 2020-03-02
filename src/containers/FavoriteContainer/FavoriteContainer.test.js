@@ -77,7 +77,6 @@ describe('FavoriteContainer', () => {
 
     it('should be able to determine which icon to display', () => {
       expect(wrapper.instance().determineIcon()).toEqual(save);
-
       mockCurrentReading.saved = true;
       expect(wrapper.instance().determineIcon()).toEqual(saved);
     })
