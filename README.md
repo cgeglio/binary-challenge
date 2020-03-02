@@ -14,7 +14,7 @@ For my final Mod 3 solo project, I decided to make a tarot application. Once log
 - Pick a spread (or use the default 4 card spread)
 - Type in a question to ask
 - Click the "ask the cards" button
-- After viewing your reading, you can click the save button and revisit it by clicking the "saved" button at the top of the page
+- After viewing your reading, you can click the "save" button. Revisit your saved readings by clicking the "saved" button at the top of the page
 - You can view the entire deck by clicking the "deck" button at the top of the page 
 
 ### APIs
