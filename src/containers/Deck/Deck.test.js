@@ -3,6 +3,7 @@ import { Deck, mapDispatchToProps } from './Deck';
 import { removeQuestion } from '../../actions';
 import { shallow } from 'enzyme';
 import { getDeck } from '../../apiCalls';
+import { mockRandom } from 'jest-mock-random';
 
 jest.mock('../../apiCalls');
 
@@ -26,6 +27,7 @@ describe('Deck', () => {
 
   describe('Deck container/component', () => {
     it('should match the snapshot', () => {
+      mockRandom([.01]);
       expect(wrapper).toMatchSnapshot();
     });
 
