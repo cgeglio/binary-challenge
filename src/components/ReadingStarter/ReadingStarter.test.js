@@ -1,6 +1,6 @@
 import React from 'react';
 import { ReadingStarter, mapDispatchToProps, mapStateToProps } from './ReadingStarter';
-import { addQuestion, addspread, removeReading } from '../../actions';
+import { addQuestion, addSpread, removeReading } from '../../actions';
 import { shallow } from 'enzyme';
 
 describe('ReadingStarter', () => {
@@ -48,14 +48,24 @@ describe('ReadingStarter', () => {
       expect(wrapper.state('error')).toEqual('Please submit a question for your reading.');
     });
 
-    it('should call updateQuestion and reset state when startReading is called', () => {
-      const mockUpdate = jest.fn().mockImplementation();
+    it('should call updateQuestion, removeReading, updateSpreadNumber and reset state when startReading is called', () => {
+      const mockUpdateQuestion = jest.fn().mockImplementation();
+      const mockUpdateSpreadNumber = jest.fn().mockImplementation();
+      const mockRemoveReading = jest.fn().mockImplementation();
       const expected = {question: '', spread: 4, error: null};
-      wrapper = shallow(<ReadingStarter user={mockUser} updateQuestion={mockUpdate}/>);
+      wrapper = shallow(<ReadingStarter
+        currentReading={{cards: [{name: 'The Magician', value: 8}]}}
+        user={mockUser}
+        updateQuestion={mockUpdateQuestion}
+        updateSpreadNumber={mockUpdateSpreadNumber}
+        removeReading={mockRemoveReading}
+      />);
       wrapper.instance().setState({question: 'Is the sky blue?'});
 
       wrapper.instance().startReading();
-      expect(mockUpdate).toHaveBeenCalledWith('Is the sky blue?');
+      expect(mockUpdateQuestion).toHaveBeenCalledWith('Is the sky blue?');
+      expect(mockUpdateSpreadNumber).toHaveBeenCalledWith(4);
+      expect(mockRemoveReading).toHaveBeenCalledWith({cards: [{name: 'The Magician', value: 8}]});
       expect(wrapper.state()).toEqual(expected);
     });
 

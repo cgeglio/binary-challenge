@@ -1,6 +1,6 @@
 import React from 'react';
 import { Nav, mapStateToProps, mapDispatchToProps } from './Nav';
-import { logout, resetFavorites, removeCards, removeReading, removeFortune, removeQuestion } from '../../actions';
+import { logout, resetFavorites, removeReading, removeQuestion } from '../../actions';
 import { shallow } from 'enzyme';
 
 describe('Nav', () => {
@@ -31,36 +31,28 @@ describe('Nav', () => {
     it ('should call logoutUser, resetFavorites, removeCards, removeQuestion, removeFortune, removeReading when the logout button is clicked', () => {
       let mockLogout = jest.fn().mockImplementation();
       let mockResetFavorites = jest.fn().mockImplementation();
-      let mockRemoveCards = jest.fn().mockImplementation();
       let mockRemoveQuestion = jest.fn().mockImplementation();
-      let mockRemoveFortune = jest.fn().mockImplementation();
       let mockRemoveReading = jest.fn().mockImplementation();
       wrapper = shallow(<Nav
         user={mockUser}
         favorites={mockFavorites}
-        cards={mockCards}
         question={mockQuestion}
-        fortune={mockFortune}
         currentReading={mockReading}
         logoutUser={mockLogout}
         resetFavorites={mockResetFavorites}
-        removeCards={mockRemoveCards}
         removeQuestion={mockRemoveQuestion}
-        removeFortune={mockRemoveFortune}
         removeReading={mockRemoveReading}
       />);
       wrapper.find('#logout-btn').simulate('click');
       expect(mockLogout).toHaveBeenCalledWith(mockUser);
       expect(mockResetFavorites).toHaveBeenCalledWith(mockFavorites);
-      expect(mockRemoveCards).toHaveBeenCalledWith(mockCards);
       expect(mockRemoveQuestion).toHaveBeenCalledWith(mockQuestion);
-      expect(mockRemoveFortune).toHaveBeenCalledWith(mockFortune);
       expect(mockRemoveReading).toHaveBeenCalledWith(mockReading);
     });
   });
 
   describe('mapStateToProps', () => {
-    it('should return a user, an array of favorites, a question, a fortune, an array of cards, and a current reading', () => {
+    it('should return a user, an array of favorites, a question, and a current reading', () => {
       const mockDispatch = jest.fn();
       const mockState = {
         user: mockUser,
@@ -75,8 +67,6 @@ describe('Nav', () => {
         user: mockUser,
         favorites: mockFavorites,
         question: mockQuestion,
-        fortune: mockFortune,
-        cards: mockCards,
         currentReading: mockReading
       };
       const mappedProps = mapStateToProps(mockState);
@@ -98,22 +88,6 @@ describe('Nav', () => {
       const actionToDispatch = removeQuestion(mockQuestion);
       const mappedProps = mapDispatchToProps(mockDispatch);
       mappedProps.removeQuestion(mockQuestion);
-      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
-    })
-
-    it('should call dispatch with the remove fortune action when the logout button is clicked', () => {
-      const mockDispatch = jest.fn();
-      const actionToDispatch = removeFortune(mockFortune);
-      const mappedProps = mapDispatchToProps(mockDispatch);
-      mappedProps.removeFortune(mockFortune);
-      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
-    })
-
-    it('should call dispatch with the remove cards action when the logout button is clicked', () => {
-      const mockDispatch = jest.fn();
-      const actionToDispatch = removeCards(mockCards);
-      const mappedProps = mapDispatchToProps(mockDispatch);
-      mappedProps.removeCards(mockCards);
       expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
     })
 

@@ -91,7 +91,7 @@ describe('FavoriteContainer', () => {
   });
 
   describe('mapStateToProps', () => {
-    it('should return a fortune string and a current reading object', () => {
+    it('should return a current reading object', () => {
       const mockDispatch = jest.fn();
       const mockState = {
         user: {name: 'Bithcuits', id: 9},
@@ -106,7 +106,6 @@ describe('FavoriteContainer', () => {
         }
       }
       const expected = {
-        fortune: 'Keep your friends close and your enemies closer',
         currentReading: {
           cards: [{name: 'The Moon', value: 6}],
           question: 'Is Bithcuits a good kitty?',
