@@ -14,6 +14,7 @@ describe('Deck', () => {
 
   beforeEach(() => {
     mockResetQuestion = jest.fn().mockImplementation();
+    mockRandom([.01]);
 
     getDeck.mockImplementation(() => {
       return Promise.resolve({cards: [
@@ -27,7 +28,6 @@ describe('Deck', () => {
 
   describe('Deck container/component', () => {
     it('should match the snapshot', () => {
-      mockRandom([.01]);
       expect(wrapper).toMatchSnapshot();
     });
 
