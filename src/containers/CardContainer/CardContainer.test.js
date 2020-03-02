@@ -1,6 +1,6 @@
 import React from 'react';
 import { CardContainer, mapDispatchToProps, mapStateToProps } from './CardContainer';
-import { addFavorite, removeFavorite, addCards, addFortune, addReading } from '../../actions';
+import { addFavorite, removeFavorite, addReading, removeQuestion} from '../../actions';
 import save from '../../images/save.png';
 import saved from '../../images/saved.png';
 import { shallow } from 'enzyme';
@@ -11,32 +11,24 @@ jest.mock('../../apiCalls');
 describe('CardContainer', () => {
 
   let wrapper;
-  let mockCards;
+  let mockSpreadNumber;
   let mockQuestion;
-  let mockFortune;
   let mockCurrentReading;
-  let mockAddCards;
   let mockAddReading;
-  let mockRemoveCards;
-  let mockAddFortune;
   let mockAddFavorite;
   let mockRemoveFavorite;
   let mockRemoveQuestion;
 
   beforeEach(() => {
-    mockCards = [{name: 'The Magician', value: 8}];
+    mockSpreadNumber = 2;
     mockQuestion = 'Is the sky blue?'
-    mockFortune = 'Keep your friends close and your enemies closer';
     mockCurrentReading = {
       cards: [{name: 'The Moon', value: 6}], question: 'Is Bithcuits a good kitty?', fortune: 'Keep your friends close and your enemies closer',
       id: 25,
       saved: false
     };
 
-    mockAddCards = jest.fn().mockImplementation();
-    mockAddFortune = jest.fn().mockImplementation();
     mockAddReading = jest.fn().mockImplementation();
-    mockRemoveCards = jest.fn().mockImplementation();
     mockAddFavorite = jest.fn().mockImplementation();
     mockRemoveFavorite = jest.fn().mockImplementation();
     mockRemoveQuestion = jest.fn().mockImplementation();
@@ -53,14 +45,9 @@ describe('CardContainer', () => {
     });
 
     wrapper = shallow(<CardContainer
-       cards={mockCards}
        question={mockQuestion}
-       fortune={mockFortune}
        currentReading={mockCurrentReading}
-       addCardsToStore={mockAddCards}
-       addFortuneToStore={mockAddFortune}
        addReadingToStore={mockAddReading}
-       removeCards={mockRemoveCards}
        addReadingToFavorites={mockAddFavorite}
        removeReadingFromFavorites={mockRemoveFavorite}
        resetQuestionInStore={mockRemoveQuestion}
@@ -73,7 +60,10 @@ describe('CardContainer', () => {
     });
 
     it('should start with a default state', () => {
-      expect(wrapper.state()).toEqual({icon: save});
+      expect(wrapper.state()).toEqual({icon: save, cards: [
+        {name: 'The Sun', value: 8},
+        {name: 'The Hermit', value: 12}
+      ]});
     })
 
     it('should call getFortune when fetchFortune is called', () => {
@@ -83,14 +73,15 @@ describe('CardContainer', () => {
 
     it('should call addReadingToStore when addCurrentReading is called', () => {
       global.Date.now = jest.fn().mockImplementation(() => 12345)
+      wrapper.instance().setState({cards: [{name: 'The Moon', value: 6}]})
       const expected = {
-        cards: mockCards,
-        fortune: mockFortune,
+        cards: [{name: 'The Moon', value: 6}],
+        fortune: 'The early bird gets the worm',
         question: mockQuestion,
         id: 12345,
         saved: false
       }
-      wrapper.instance().addCurrentReading();
+      wrapper.instance().addCurrentReading('The early bird gets the worm');
       expect(mockAddReading).toHaveBeenCalledWith(expected);
     })
 
@@ -114,7 +105,10 @@ describe('CardContainer', () => {
         saved: true
       };
       wrapper.instance().saveReading();
-      expect(wrapper.state()).toEqual({icon: saved})
+      expect(wrapper.state()).toEqual({icon: saved, cards:[
+        {name: 'The Sun', value: 8},
+        {name: 'The Hermit', value: 12}
+      ]})
       expect(mockAddFavorite).toHaveBeenCalledWith(expected);
     })
 
@@ -126,7 +120,10 @@ describe('CardContainer', () => {
         saved: false
       };
       wrapper.instance().removeReading();
-      expect(wrapper.state()).toEqual({icon: save})
+      expect(wrapper.state()).toEqual({icon: save, cards:[
+        {name: 'The Sun', value: 8},
+        {name: 'The Hermit', value: 12}
+      ]})
       expect(mockRemoveFavorite).toHaveBeenCalledWith(expected);
     })
 
@@ -136,10 +133,9 @@ describe('CardContainer', () => {
       expect(wrapper.instance().determineIcon()).toEqual(saved);
     })
 
-    it('should call resetQuestionInStore and removeCards when resetInfo is called', () => {
+    it('should call resetQuestionInStore when resetInfo is called', () => {
       wrapper.instance().resetInfo()
       expect(mockRemoveQuestion).toHaveBeenCalledWith(mockQuestion);
-      expect(mockRemoveCards).toHaveBeenCalledWith(mockCards);
     })
 
     it('should call updateSavedStatus when the save button is clicked', () => {
@@ -151,9 +147,10 @@ describe('CardContainer', () => {
   });
 
   describe('mapStateToProps', () => {
-    it('should return an array of cards, a question, a fortune, and a current reading object', () => {
+    it('should return a question, a spread number, and a current reading object', () => {
       const mockDispatch = jest.fn();
       const mockState = {
+        spreadNumber: 3,
         user: {name: 'Bithcuits', id: 9},
         cards: [{name: 'The Hermit', value: 3}],
         question: 'Is Bithcuits a good kitty?',
@@ -167,9 +164,8 @@ describe('CardContainer', () => {
         }
       }
       const expected = {
-        cards: [{name: 'The Hermit', value: 3}],
+        spreadNumber: 3,
         question: 'Is Bithcuits a good kitty?',
-        fortune: 'Keep your friends close and your enemies closer',
         currentReading: {
           cards: [{name: 'The Moon', value: 6}],
           question: 'Is Bithcuits a good kitty?',
@@ -184,25 +180,6 @@ describe('CardContainer', () => {
   });
 
   describe('mapDispatchToProps', () => {
-    it('should call dispatch with the addCards action when addCardsToStore is called', () => {
-      const mockCards = {cards: [{name: 'The Magician', value: 9}]};
-      const mockDispatch = jest.fn();
-      const actionToDispatch = addCards(mockCards);
-      const mappedProps = mapDispatchToProps(mockDispatch);
-
-      mappedProps.addCardsToStore(mockCards);
-      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
-    })
-
-    it('should call dispatch with the addFortune action when addFortuneToStore is called', () => {
-      const mockFortune = 'Marry in haste, regret in leisure';
-      const mockDispatch = jest.fn();
-      const actionToDispatch = addFortune(mockFortune);
-      const mappedProps = mapDispatchToProps(mockDispatch);
-
-      mappedProps.addFortuneToStore(mockFortune);
-      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
-    })
 
     it('should call dispatch with the addReading action when addReadingToStore is called', () => {
       const mockReading = {cards: [{name: 'The Magician', value: 9}], id: 8};
@@ -231,6 +208,16 @@ describe('CardContainer', () => {
       const mappedProps = mapDispatchToProps(mockDispatch);
 
       mappedProps.removeReadingFromFavorites(mockFavorite);
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    })
+
+    it('should call dispatch with the removeQuestion action when resetQuestionInStore is called', () => {
+      const mockQuestion = 'Is the sky blue?';
+      const mockDispatch = jest.fn();
+      const actionToDispatch = removeQuestion(mockQuestion);
+      const mappedProps = mapDispatchToProps(mockDispatch);
+
+      mappedProps.resetQuestionInStore(mockQuestion);
       expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
     })
   });

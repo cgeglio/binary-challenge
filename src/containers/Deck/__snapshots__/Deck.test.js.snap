@@ -30,8 +30,8 @@ exports[`Deck Deck container/component should match the snapshot 1`] = `
         "value": 8,
       }
     }
-    id="on-flip"
     key="NaN"
+    number={3}
   />
   <Card
     card={
@@ -40,8 +40,8 @@ exports[`Deck Deck container/component should match the snapshot 1`] = `
         "value": 12,
       }
     }
-    id="on-flip"
     key="NaN"
+    number={4}
   />
 </section>
 `;

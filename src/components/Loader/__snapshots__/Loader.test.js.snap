@@ -2,17 +2,12 @@
 
 exports[`Loader should match the snapshot 1`] = `
 <section
-  className="loader pulsate-fwd"
+  className="loader pulsate-fwd fade-in"
 >
   <img
-    alt="Two hands holding a crystal ball"
-    className="crystal-ball-loader"
-    src="crystal.png"
+    alt="An eye with the words 'Still Looking'"
+    className="loader-img"
+    src="stillLooking.png"
   />
-  <h2
-    className="loader-msg"
-  >
-    Looking...
-  </h2>
 </section>
 `;

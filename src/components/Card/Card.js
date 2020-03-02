@@ -2,10 +2,10 @@ import React from 'react';
 import './Card.scss';
 import PropTypes from 'prop-types';
 
-const Card = ({ card, id, number}) => {
+const Card = ({ card, number}) => {
   return (
     <article className='flip-card fade-in'>
-      <div className='flip-card-inner' id={id}>
+      <div className='flip-card-inner'>
       <img src={process.env.PUBLIC_URL + `/cardAssets/${card.name_short}.jpg`} alt="Tarot card" className='flip-card-back' />
       <div className="overlay">
         <div className="card-details">
@@ -26,6 +26,5 @@ export default Card;
 
 Card.propTypes = {
   card: PropTypes.object,
-  id: PropTypes.string,
   number: PropTypes.number
 }
