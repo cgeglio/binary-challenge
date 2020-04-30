@@ -2,7 +2,7 @@
 
 ## Live Site
 https://golden-city-tarot.herokuapp.com/
-***Use any username/password to login.***
+***Use any username/password for login.***
 
 ## Introduction
 For my final Mod 3 solo project, I decided to make a tarot application. Once logged in, a user can select the card spread they would like to have and enter a question for the cards. Depending on the chosen spread, they will be shown 1,3, or 4 cards as well as an interpretation. User's can save and revisit readings. Additionally, users can view and explore the entire tarot deck.
